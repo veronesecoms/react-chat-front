@@ -1,7 +1,7 @@
 import React from 'react'
 
 const BannerRightRegister = () => {
-  return(
+  return (
     <h3>
       oi
     </h3>

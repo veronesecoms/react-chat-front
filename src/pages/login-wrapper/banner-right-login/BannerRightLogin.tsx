@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { HalfCardRight, TitleRegister, LoginButton, GraySeparator, TextLink, LoginLockIcon, TextAligner } from './BannerRightLoginStyledComponents'
 
 const BannerRightLogin = () => {
-  return(
+  return (
     <HalfCardRight>
 
       <TitleRegister>
@@ -17,15 +17,15 @@ const BannerRightLogin = () => {
       <Grid spacing={3} container direction="row">
 
         <Grid item md={12}>
-          <TextField fullWidth={true} label="Email" variant="filled" />
+          <TextField fullWidth label="Email" variant="filled" />
         </Grid>
 
         <Grid item md={12}>
-          <TextField fullWidth={true} label="Senha" variant="filled" />
+          <TextField fullWidth label="Senha" variant="filled" />
         </Grid>
 
         <Grid item md={12}>
-          <LoginButton fullWidth={true} variant="contained" color="primary">
+          <LoginButton fullWidth variant="contained" color="primary">
             Entrar
           </LoginButton>
         </Grid>
