@@ -12,6 +12,11 @@ import { Wrapper, FullContainerHeight, GridBanners } from './LoginWrapperCompone
 
 const LoginWrapper = () => {
 
+  const routes = [
+    { path: '/', component: BannerRightLogin },
+    { path: '/register', component: BannerRightRegister }
+  ]
+
   return (
     <Router>
       <Wrapper>
@@ -19,10 +24,11 @@ const LoginWrapper = () => {
         <FullContainerHeight maxWidth="md">
           <GridBanners container>
             <BannerLeft />
-            <Switch>
-              <Route exact path="/" component={BannerRightLogin} />
-              <Route path="/register" component={BannerRightRegister} />
-            </Switch>
+              <Switch>
+                {routes.map(route => (
+                  <Route key={route.path} exact path={route.path} component={route.component} />
+                ))}
+              </Switch>
           </GridBanners>
         </FullContainerHeight>
       </Wrapper>
