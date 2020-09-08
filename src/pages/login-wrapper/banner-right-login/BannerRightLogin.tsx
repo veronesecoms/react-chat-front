@@ -36,7 +36,9 @@ const BannerRightLogin = () => {
               <TextLink>Criar uma conta</TextLink>
             </Link>
             <GraySeparator> |</GraySeparator>
-            <TextLink>Perdi minha senha</TextLink>
+            <Link to="/recoveryPassword">
+              <TextLink>Esqueci minha senha</TextLink>
+            </Link>
           </TextAligner>
         </Grid>
       </Grid>

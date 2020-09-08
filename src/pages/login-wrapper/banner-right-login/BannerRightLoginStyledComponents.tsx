@@ -1,12 +1,13 @@
-import { Button } from '@material-ui/core';
+import {Button} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import styled from 'styled-components';
 
 const HalfCardRight = styled.div`
+  overflow-y: scroll;
   width: 50%;
   height: 80%;
   border-radius: 10px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   padding: 20px;
 `;
 
@@ -19,18 +20,18 @@ const TitleRegister = styled.h1`
 
 const LoginButton = styled(Button)`
   height: 45px;
-`
+`;
 
 const GraySeparator = styled.span`
   margin-left: 15px;
   margin-right: 15px;
-  color: #7B7B7B;
-`
+  color: #7b7b7b;
+`;
 
 const TextAligner = styled.div`
   margin-top: 20px;
   text-align: center;
-`
+`;
 
 const TextLink = styled.span`
   margin-left: 5px;
@@ -38,7 +39,7 @@ const TextLink = styled.span`
   color: #9ea800;
   cursor: pointer;
   text-decoration: underline;
-`
+`;
 
 const LoginLockIcon = styled(LockOutlinedIcon)`
   && {
@@ -50,6 +51,14 @@ const LoginLockIcon = styled(LockOutlinedIcon)`
     font-size: 60px;
     color: #d3d925;
   }
-`
+`;
 
-export { HalfCardRight, TitleRegister, LoginButton, GraySeparator, TextLink, LoginLockIcon, TextAligner }
+export {
+  HalfCardRight,
+  TitleRegister,
+  LoginButton,
+  GraySeparator,
+  TextLink,
+  LoginLockIcon,
+  TextAligner,
+};

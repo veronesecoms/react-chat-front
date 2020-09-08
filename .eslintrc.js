@@ -1,9 +1,9 @@
 module.exports = {
   extends: 'react-app',
   globals: {
-    use: true
+    use: true,
   },
   rules: {
-    'import/no-default-export': 'off'
-  }
+    'import/no-default-export': 'off',
+  },
 };

@@ -9,12 +9,18 @@ import BannerLeft from './banner-left/BannerLeft';
 import BannerRightLogin from './banner-right-login/BannerRightLogin'
 import BannerRightRegister from './banner-right-register/BannerRightRegister';
 import { Wrapper, FullContainerHeight, GridBanners } from './LoginWrapperComponentStyles';
+import BannerRightConfirmEmail from './banner-right-confirm-email/BannerRightConfirmEmail';
+import BannerRightRecoveryPassword from './banner-right-recovery-password/BannerRightRecoveryPassword';
+import BannerRightConfirmRecoveryPassword from './banner-right-confirm-recovery-password/BannerRightConfirmRecoveryPassword';
 
 const LoginWrapper = () => {
 
   const routes = [
     { path: '/', component: BannerRightLogin },
-    { path: '/register', component: BannerRightRegister }
+    { path: '/register', component: BannerRightRegister },
+    { path: '/confirmEmail/:token', component: BannerRightConfirmEmail },
+    { path: '/recoveryPassword', component: BannerRightRecoveryPassword },
+    { path: '/confirmRecoveryPassword/:token', component: BannerRightConfirmRecoveryPassword }
   ]
 
   return (
