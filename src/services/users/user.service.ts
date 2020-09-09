@@ -3,6 +3,7 @@ import { IRegisterUser } from './../../interfaces/register-user.interface';
 import api from '../api';
 import { AxiosResponse } from 'axios';
 import { IRequestResponse } from '../../interfaces/request-response.interface';
+import { ILoginUser } from '../../pages/login-wrapper/banner-right-login/BannerRightLogin';
 
 const confirmEmailUser = async (token: string): Promise<AxiosResponse<IRequestResponse>> => {
   return await api.patch('/users/confirmEmail/' + token)
@@ -16,8 +17,12 @@ const sendEmailRecoveryPassword = async (email: string): Promise<AxiosResponse<I
   return await api.put('/users/emailRecoveryPassword/' + email);
 }
 
+const login = async (user: ILoginUser): Promise<AxiosResponse<IRequestResponse>> => {
+  return await api.post('/auth/login', user)
+}
+
 const sendEmailConfirmRecoveryPassword = async (changePasswordData: IConfirmRecoveryPassword): Promise<AxiosResponse<IRequestResponse>> => {
   return await api.put('/users/confirmEmailRecovery/' + changePasswordData.token, changePasswordData);
 }
 
-export { confirmEmailUser, registerUser, sendEmailRecoveryPassword, sendEmailConfirmRecoveryPassword }
+export { confirmEmailUser, registerUser, sendEmailRecoveryPassword, sendEmailConfirmRecoveryPassword, login }

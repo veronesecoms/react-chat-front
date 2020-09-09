@@ -1,4 +1,3 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -26,7 +25,6 @@ const LoginWrapper = () => {
   return (
     <Router>
       <Wrapper>
-        <CssBaseline />
         <FullContainerHeight maxWidth="md">
           <GridBanners container>
             <BannerLeft />

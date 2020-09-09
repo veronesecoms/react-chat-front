@@ -3,10 +3,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import styled from 'styled-components';
 
 const HalfCardRight = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 50%;
   height: 80%;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fafafa;
   padding: 20px;
 `;
