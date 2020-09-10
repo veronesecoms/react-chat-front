@@ -1,25 +1,35 @@
-import React from 'react'
-import { HeaderBase, ChatIcon, BannerText } from './HeaderStyles';
-import { Grid, Container } from '@material-ui/core';
+import React from 'react';
+import {
+  HeaderBase,
+  ChatIcon,
+  BannerText,
+  DivLogo,
+  AvatarCircle,
+  Avatar,
+  DivPerfil,
+  UserName,
+  UserEmail,
+  DivCredentials,
+} from './HeaderStyles';
 
 const Header = () => {
   return (
     <HeaderBase>
-      <Container maxWidth="xl">
-        <Grid container alignItems="center" justify="space-between" direction="row">
-          <Grid container alignItems="center" item md={3}>
-            <ChatIcon />
-            <BannerText>
-              React Chat
-            </BannerText>
-          </Grid>
-          <Grid item>
-            foto aqui
-          </Grid>
-        </Grid>
-      </Container>
+      <DivLogo>
+        <ChatIcon />
+        <BannerText>React Chat</BannerText>
+      </DivLogo>
+      <DivPerfil>
+        <AvatarCircle>
+          <Avatar />
+        </AvatarCircle>
+        <DivCredentials>
+          <UserName>Renato</UserName>
+          <UserEmail>renatim@hotmail.com.br</UserEmail>
+        </DivCredentials>
+      </DivPerfil>
     </HeaderBase>
-  )
-}
+  );
+};
 
 export default Header;
