@@ -12,7 +12,7 @@ const ChatPanel = () => {
   return (
     <ChatPanelWrapper>
       <List>
-        <ListItemUserChat alignItems="flex-start">
+        <ListItemUserChat button component="a" alignItems="flex-start">
           <ListItemAvatar>
             <Avatar src="https://i.pinimg.com/236x/bc/9a/8f/bc9a8f53ab34d2aa343002cf7952657c.jpg" />
           </ListItemAvatar>
@@ -31,7 +31,7 @@ const ChatPanel = () => {
           />
         </ListItemUserChat>
 
-        <ListItemUserChat alignItems="flex-start">
+        <ListItemUserChat button component="a" alignItems="flex-start">
           <ListItemAvatar>
             <Avatar src="https://i.pinimg.com/originals/47/d4/41/47d441829098c2df1cefbcf63a05324b.jpg" />
           </ListItemAvatar>

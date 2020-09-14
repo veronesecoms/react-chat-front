@@ -20,12 +20,12 @@ const SearchInputIcon = styled(SearchOutlinedIcon)`
 `;
 
 const GridSearchInput = styled(Grid)`
-  float: left;
+  max-height: 80px;
   width: 100%;
 `;
 
 const GridChatPanel = styled(Grid)`
-  padding-top: 80px;
+  padding-top: 15px;
 `;
 
 export {

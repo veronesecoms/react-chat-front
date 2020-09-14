@@ -4,7 +4,7 @@ import {ListItemText, ListItem} from '@material-ui/core';
 const ChatPanelWrapper = styled.div`
   width: 100%;
   background-color: #5c4f82;
-  height: 60vh;
+  height: 100%;
   border-radius: 15px;
 `;
 

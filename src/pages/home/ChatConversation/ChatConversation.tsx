@@ -1,16 +1,19 @@
-import React from 'react';
-import {Grid, IconButton, Container, Typography} from '@material-ui/core';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import React from "react";
+import { Container, Grid, IconButton } from "@material-ui/core";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import {
+  ChatContainer,
   ConversationWrapper,
   GridChatConversation,
   GridIconOptions,
-  TestTypography,
-} from './ChatConversationStyles';
+} from "./ChatConversationStyles";
+import DestinataryMessage from "./DestinataryMessage/DestinataryMessage";
+import UserMessage from "./UserMessage/UserMessage";
+import SendMessageInput from "./SendMessageInput/SendMessageInput";
 
 const ChatConversation = () => {
   return (
-    <GridChatConversation item md={7}>
+    <GridChatConversation item md={8}>
       <ConversationWrapper>
         <Grid direction="row" container>
           <GridIconOptions container justify="flex-end" item md={12}>
@@ -18,11 +21,11 @@ const ChatConversation = () => {
               <SettingsOutlinedIcon />
             </IconButton>
           </GridIconOptions>
-          <Grid wrap="nowrap" item md={12}>
-            <TestTypography>
-              DASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASDDASDASFASDASD
-            </TestTypography>
-          </Grid>
+          <ChatContainer>
+            <DestinataryMessage />
+            <UserMessage />
+          </ChatContainer>
+          <SendMessageInput />
         </Grid>
       </ConversationWrapper>
     </GridChatConversation>

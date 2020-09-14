@@ -1,24 +1,35 @@
-import styled from 'styled-components';
-import { Grid } from '@material-ui/core';
+import styled from "styled-components";
+import { Container, Grid } from "@material-ui/core";
 
 const ConversationWrapper = styled.div`
-  width: 100%;
-  height: 75vh;
+  height: 80vh;
   background-color: #5c4f82;
   border-radius: 15px;
-`
+  position: relative;
+`;
 
-const GridChatConversation = styled(Grid)`
-  float: right;
-  width: 100%;
-`
+const GridChatConversation = styled(Grid)``;
 
 const GridIconOptions = styled(Grid)`
   position: sticky;
-`
+`;
 
 const TestTypography = styled.h1`
   line-break: anywhere;
-`
+`;
 
-export { ConversationWrapper, GridChatConversation, GridIconOptions, TestTypography };
+const ChatContainer = styled(Container)`
+  height: 60vh;
+  padding: 15px;
+  overflow: auto;
+  max-height: 60vh;
+  overflow-x: hidden;
+`;
+
+export {
+  ConversationWrapper,
+  GridChatConversation,
+  GridIconOptions,
+  TestTypography,
+  ChatContainer,
+};
