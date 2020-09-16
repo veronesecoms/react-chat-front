@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const SearchInput = styled(TextField)`
   && {
     .MuiFilledInput-root {
-      border-radius: 25px;
       background-color: #5c4f82;
       color: #fafafa;
       opacity: 95%;

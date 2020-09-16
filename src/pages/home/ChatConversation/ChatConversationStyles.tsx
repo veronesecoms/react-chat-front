@@ -4,7 +4,8 @@ import { Container, Grid } from "@material-ui/core";
 const ConversationWrapper = styled.div`
   height: 80vh;
   background-color: #5c4f82;
-  border-radius: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   position: relative;
 `;
 

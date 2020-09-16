@@ -13,7 +13,9 @@ const GridContainerMessage = styled(Grid)`
 `
 
 const IconButtonWrapper = styled(IconButton)`
+  padding: 8px;
   position: absolute;
+  margin-right: 5px;
   right: 0;
   background-color: #3cc6b7;
   color: #fafafa;
@@ -23,6 +25,8 @@ const IconButtonWrapper = styled(IconButton)`
 `
 
 const GridInput = styled(Grid)`
+  display: flex;
+  align-items: center;
   position: relative;
 `
 

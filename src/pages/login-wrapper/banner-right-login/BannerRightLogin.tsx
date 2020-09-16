@@ -1,7 +1,6 @@
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import React from 'react';
-import {Link} from 'react-router-dom';
+import Grid from "@material-ui/core/Grid";
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   HalfCardRight,
   TitleRegister,
@@ -10,52 +9,64 @@ import {
   TextLink,
   LoginLockIcon,
   TextAligner,
-} from './BannerRightLoginStyledComponents';
-import {useHistory} from 'react-router';
-import {useMutation} from 'react-query';
-import {AxiosResponse, AxiosError} from 'axios';
-import {IRequestResponse} from '../../../interfaces/request-response.interface';
-import {login} from '../../../services/users/user.service';
-import * as Yup from 'yup';
-import {useFormik} from 'formik';
-import ButtonLoadingSvgAnimated from '../../../components/styled/button-loading-svg-animated';
-import {ProviderContext, useSnackbar} from 'notistack';
+} from "./BannerRightLoginStyledComponents";
+import history from "../../../utils/history";
+import { useMutation } from "react-query";
+import { AxiosResponse, AxiosError } from "axios";
+import { IRequestResponse } from "../../../interfaces/request-response.interface";
+import { login } from "../../../services/users/user.service";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import ButtonLoadingSvgAnimated from "../../../components/styled/button-loading-svg-animated";
+import { ProviderContext, useSnackbar } from "notistack";
+import SoftInputField from "../../../components/styled/soft-textfield";
 
 export interface ILoginUser {
   email: string;
   password: string;
 }
 
+export interface ILoginResponse {
+  token: string;
+  data: ILoginResponseData;
+}
+
+export interface ILoginResponseData {
+  email: string;
+  first_name: string;
+}
+
 const BannerRightLogin = () => {
-  const history = useHistory();
   const snackBar: ProviderContext = useSnackbar();
-  const [mutateLoginUser, {isLoading}] = useMutation<
-    AxiosResponse<IRequestResponse>,
+  const [mutateLoginUser, { isLoading }] = useMutation<
+    AxiosResponse<ILoginResponse>,
     AxiosError<IRequestResponse>,
     ILoginUser
   >(login, {
-    onSuccess: (response: AxiosResponse<IRequestResponse>) => {
-      console.log(response);
+    onSuccess: (response: AxiosResponse<ILoginResponse>) => {
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("email", response.data.data.email);
+      localStorage.setItem("first_name", response.data.data.first_name);
       redirectToHome();
     },
     onError: (error: AxiosError<IRequestResponse>) => {
       snackBar.enqueueSnackbar(error.response?.data.message, {
-        variant: 'error',
+        variant: "error",
       });
     },
   });
 
   const schema = Yup.object().shape({
     email: Yup.string()
-      .required('Necessário informar o email')
-      .email('Email não possui formato válido'),
-    password: Yup.string().required('Necessário informar a senha!'),
+      .required("Necessário informar o email")
+      .email("Email não possui formato válido"),
+    password: Yup.string().required("Necessário informar a senha!"),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema: schema,
     onSubmit: (user: ILoginUser) => {
@@ -64,7 +75,7 @@ const BannerRightLogin = () => {
   });
 
   const redirectToHome = () => {
-    history.push('/home');
+    history.push("/home");
   };
 
   return (
@@ -78,11 +89,11 @@ const BannerRightLogin = () => {
       <form onSubmit={formik.handleSubmit} noValidate>
         <Grid spacing={3} container direction="row">
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              helperText={formik.touched.email ? formik.errors.email : ''}
+              helperText={formik.touched.email ? formik.errors.email : ""}
               error={formik.touched.email && Boolean(formik.errors.email)}
               fullWidth
               id="login-user-email"
@@ -93,12 +104,12 @@ const BannerRightLogin = () => {
           </Grid>
 
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.password}
               type="password"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              helperText={formik.touched.password ? formik.errors.password : ''}
+              helperText={formik.touched.password ? formik.errors.password : ""}
               error={formik.touched.password && Boolean(formik.errors.password)}
               name="password"
               id="login-user-password"
@@ -114,14 +125,15 @@ const BannerRightLogin = () => {
               disabled={isLoading}
               fullWidth
               variant="contained"
-              color="primary">
+              color="primary"
+            >
               {isLoading ? (
                 <>
                   <ButtonLoadingSvgAnimated size={20} />
                   Carregando...
                 </>
               ) : (
-                'Entrar'
+                "Entrar"
               )}
             </LoginButton>
           </Grid>

@@ -5,7 +5,8 @@ const ChatPanelWrapper = styled.div`
   width: 100%;
   background-color: #5c4f82;
   height: 100%;
-  border-radius: 15px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 `;
 
 const UserNameAndLastMessageTextWrapper = styled(ListItemText)`

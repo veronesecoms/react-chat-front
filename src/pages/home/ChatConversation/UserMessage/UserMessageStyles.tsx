@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 const MessageContainer = styled.div`
   background: linear-gradient(to right, #d3cce3, #e9e4f0);
-  padding: 20px;
+  padding: 15px;
   color: #232020;
-  border-radius: 15px;
+  border-radius: 5px;
+  border-bottom-right-radius: 0;
   margin: 5px;
 }
 `;

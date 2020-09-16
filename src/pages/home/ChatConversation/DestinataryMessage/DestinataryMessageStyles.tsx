@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 const MessageContainer = styled.div`
   background-color: #542673;
-  padding: 20px;
-  border-radius: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  border-bottom-left-radius: 0px;
   color: #fafafa;
   opacity: 85%;
 `;

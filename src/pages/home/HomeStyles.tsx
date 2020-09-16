@@ -5,7 +5,7 @@ import {Container, Grid} from '@material-ui/core';
 const HomeWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  padding-top: 70px;
+  padding-top: 50px;
   overflow: auto;
   background-color: #542673;
 `;
@@ -20,12 +20,11 @@ const SearchInputIcon = styled(SearchOutlinedIcon)`
 `;
 
 const GridSearchInput = styled(Grid)`
-  max-height: 80px;
+  max-height: 55px;
   width: 100%;
 `;
 
 const GridChatPanel = styled(Grid)`
-  padding-top: 15px;
 `;
 
 export {

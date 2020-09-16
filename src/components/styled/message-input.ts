@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const MessageInput = styled(TextField)`
   && {
     .MuiFilledInput-root {
-      border-radius: 25px;
       background-color: #fafafa;
       color: black;
       opacity: 95%;

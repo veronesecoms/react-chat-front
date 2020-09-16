@@ -6,7 +6,7 @@ const HalfCardRight = styled.div`
   overflow-y: auto;
   width: 50%;
   height: 80%;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #fafafa;
   padding: 20px;
 `;

@@ -17,14 +17,13 @@ const Home = () => {
     <>
       <Header></Header>
       <HomeWrapper>
-        <HomeContainer wrap maxWidth="xl">
-          <Grid wrap="wrap" spacing={3} container>
+        <HomeContainer wrap maxWidth="lg">
+          <Grid wrap="wrap" spacing={1} container>
             <Grid wrap="nowrap" item md={4} container direction="column">
               <GridSearchInput item md={12}>
                 <SearchInput
                   fullWidth={true}
-                  helperText="ex: renatim@hotmail.com.br"
-                  label="Procurar usuário"
+                  label="Procurar pelo email"
                   variant="filled"
                   size="small"
                   InputProps={{

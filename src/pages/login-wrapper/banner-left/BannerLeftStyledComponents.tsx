@@ -25,7 +25,7 @@ const SvgCellPhone = styled(SvgLogin)`
 const HalfCardLeft = styled.div`
   width: 50%;
   height: 80%;
-  border-radius: 15px 0px 0px 15px;
+  border-radius: 30px 0px 0px 30px;
   background-color: #542673;
   padding: 20px;
 `;

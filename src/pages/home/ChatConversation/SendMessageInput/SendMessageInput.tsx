@@ -6,7 +6,7 @@ import SendRoundedIcon from '@material-ui/icons/SendRounded';
 const SendMessageInput = () => {
   return (
     <>
-      <GridContainerMessage container direction="row">
+      <GridContainerMessage alignItems="center" container direction="row">
         <GridInput item md={12}>
           <MessageInput label="Digite uma mensagem" variant="filled" size="small" fullWidth="true" />
           <IconButtonWrapper color="secondary" aria-label="delete">

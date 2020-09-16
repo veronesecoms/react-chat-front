@@ -20,6 +20,7 @@ import {useHistory} from 'react-router';
 import ButtonLoadingSvgAnimated from '../../../components/styled/button-loading-svg-animated';
 import { useSnackbar, ProviderContext } from 'notistack';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
+import SoftInputField from '../../../components/styled/soft-textfield';
 
 const BannerRightRegister = () => {
   const history = useHistory();
@@ -38,7 +39,7 @@ const BannerRightRegister = () => {
     }
   });
   const redirectToLogin = () => {
-    history.push('/');
+    history.push('/login');
   };
   const schema = Yup.object().shape({
     first_name: Yup.string().required('Necessário informar seu nome'),
@@ -78,7 +79,7 @@ const BannerRightRegister = () => {
       <form onSubmit={formik.handleSubmit} noValidate>
         <Grid spacing={3} container direction="row">
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.first_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -97,7 +98,7 @@ const BannerRightRegister = () => {
           </Grid>
 
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.second_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -116,7 +117,7 @@ const BannerRightRegister = () => {
           </Grid>
 
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -131,7 +132,7 @@ const BannerRightRegister = () => {
           </Grid>
 
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -147,7 +148,7 @@ const BannerRightRegister = () => {
           </Grid>
 
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.password_confirmation}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -188,7 +189,7 @@ const BannerRightRegister = () => {
           </Grid>
 
           <Grid item md={4}>
-            <BackButton variant="outlined" component={Link} to="/" fullWidth>
+            <BackButton variant="outlined" component={Link} to="/login" fullWidth>
               Voltar
             </BackButton>
           </Grid>

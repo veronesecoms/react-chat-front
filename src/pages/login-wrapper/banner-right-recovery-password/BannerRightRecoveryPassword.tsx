@@ -20,6 +20,7 @@ import { IRequestResponse } from '../../../interfaces/request-response.interface
 import { sendEmailRecoveryPassword } from '../../../services/users/user.service';
 import { IRecoveryPasswordEmail } from '../../../interfaces/recovery-password-user.interface';
 import EmailIcon from './BannerRightRegisterRecoveryPasswordStyles';
+import SoftInputField from '../../../components/styled/soft-textfield';
 
 const BannerRightRecoveryPassword = () => {
   const history = useHistory();
@@ -39,7 +40,7 @@ const BannerRightRecoveryPassword = () => {
   });
   const redirectToLogin = () => {
     setTimeout(function () {
-      history.push('/');
+      history.push('/login');
     }, 2000);
   };
   const schema = Yup.object().shape({
@@ -67,7 +68,7 @@ const BannerRightRecoveryPassword = () => {
       <form onSubmit={formik.handleSubmit} noValidate>
         <Grid spacing={3} container direction="row">
           <Grid item md={12}>
-            <TextField
+            <SoftInputField
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -104,7 +105,7 @@ const BannerRightRecoveryPassword = () => {
           </Grid>
 
           <Grid item md={4}>
-            <BackButton variant="outlined" component={Link} to="/" fullWidth>
+            <BackButton variant="outlined" component={Link} to="/login" fullWidth>
               Voltar
             </BackButton>
           </Grid>

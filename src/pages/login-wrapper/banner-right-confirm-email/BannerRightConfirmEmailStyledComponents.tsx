@@ -14,7 +14,7 @@ const EmailConfirmationContainer = styled.div`
 const HalfCardRightConfirmEmail = styled.div`
   width: 50%;
   height: 50%;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #FAFAFA;
   padding: 20px;
 `;

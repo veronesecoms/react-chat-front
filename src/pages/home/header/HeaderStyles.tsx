@@ -1,17 +1,12 @@
-import styled from 'styled-components';
-import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
+import styled from "styled-components";
+import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
+import { Container, Grid } from "@material-ui/core";
+import CachedIcon from "@material-ui/icons/Cached";
+import rotate from "../../../utils/animations/rotate";
 
-const HeaderBase = styled.header`
+const HeaderBase = styled(Grid)`
   height: 70px;
-  display: flex;
-  position: fixed;
-  align-items: center;
-  position: fixed;
-  width: 100%;
   background-color: #542673;
-  justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
 `;
 
 const ChatIcon = styled(SmsOutlinedIcon)`
@@ -24,7 +19,7 @@ const ChatIcon = styled(SmsOutlinedIcon)`
 
 const BannerText = styled.h6`
   color: #fafafa;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 15px;
   opacity: 95%;
   margin-left: 5px;
@@ -42,17 +37,15 @@ const AvatarCircle = styled.div`
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
 `;
 
-const Avatar = styled.div`
+const Avatar = styled.img`
   margin: 0 auto;
-  background-image: url('https://64.media.tumblr.com/0010af62b969459022372795bda6962f/tumblr_p7nlkhQL8n1x9q2v4o5_r1_250.jpg');
   width: 30px;
   height: 30px;
-  background-size: cover;
-  background-position: top center;
   border-radius: 50%;
 `;
 
@@ -80,6 +73,31 @@ const DivCredentials = styled.div`
   margin-left: 15px;
 `;
 
+const FixedHeader = styled(Container)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+`;
+
+const ChangeIcon = styled(CachedIcon)`
+  position: absolute;
+  margin: 0 auto;
+  color: #3cc6b7;
+  opacity: 0;
+  transition: 0.5s;
+  &:hover {
+    opacity: 1;
+  }
+  animation: ${rotate} 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+`;
+
+const HiddenInputFile = styled.input`
+  display: none;
+`;
+
 export {
   HeaderBase,
   ChatIcon,
@@ -91,4 +109,7 @@ export {
   UserName,
   UserEmail,
   DivCredentials,
+  FixedHeader,
+  ChangeIcon,
+  HiddenInputFile,
 };
