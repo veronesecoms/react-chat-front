@@ -34,6 +34,7 @@ export interface ILoginResponse {
 export interface ILoginResponseData {
   email: string;
   first_name: string;
+  picture: string;
 }
 
 const BannerRightLogin = () => {
@@ -47,6 +48,7 @@ const BannerRightLogin = () => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", response.data.data.email);
       localStorage.setItem("first_name", response.data.data.first_name);
+      localStorage.setItem("picture", response.data.data.picture);
       redirectToHome();
     },
     onError: (error: AxiosError<IRequestResponse>) => {

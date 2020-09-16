@@ -1,5 +1,6 @@
 import { Grid } from "@material-ui/core";
 import { ProviderContext, useSnackbar } from "notistack";
+import { AxiosResponse, AxiosError } from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import {
   HeaderBase,
@@ -16,6 +17,13 @@ import {
   ChangeIcon,
   DivCredentials,
 } from "./HeaderStyles";
+import { useMutation } from "react-query";
+import { IRequestResponse } from "../../../interfaces/request-response.interface";
+import { changeProfilePicture } from "../../../services/users/user.service";
+
+export interface IPictureUser {
+  picture: string | ArrayBuffer | null;
+}
 
 const Header = () => {
   const snackBar: ProviderContext = useSnackbar();
@@ -25,6 +33,23 @@ const Header = () => {
     string | ArrayBuffer | null
   >("");
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const [mutateChangeProfilePicture] = useMutation<
+    AxiosResponse<IRequestResponse>,
+    AxiosError<IRequestResponse>,
+    IPictureUser
+  >(changeProfilePicture, {
+    onSuccess: (
+      response: AxiosResponse<IRequestResponse>,
+      data: IPictureUser
+    ) => {
+      setLoggedUserPicture(data.picture);
+    },
+    onError: (error: AxiosError<IRequestResponse>) => {
+      snackBar.enqueueSnackbar(error.response?.data.message, {
+        variant: "error",
+      });
+    },
+  });
 
   const clearSameInputFileReference = (e) => {
     e.target.value = "";
@@ -33,6 +58,7 @@ const Header = () => {
   useEffect(() => {
     setLoggedUserName(localStorage.getItem("first_name"));
     setLoggedUserEmail(localStorage.getItem("email"));
+    setLoggedUserPicture(localStorage.getItem("picture"));
   }, []);
 
   const handleChangeImage = (evt) => {
@@ -46,7 +72,7 @@ const Header = () => {
     } else {
       reader.readAsDataURL(file);
       reader.onload = () => {
-        setLoggedUserPicture(reader.result);
+        mutateChangeProfilePicture({ picture: reader.result });
       };
     }
   };
