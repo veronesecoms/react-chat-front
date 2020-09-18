@@ -1,54 +1,68 @@
-import React from 'react';
+import React from "react";
 import {
   ChatPanelWrapper,
   UserNameAndLastMessageTextWrapper,
   ListItemUserChat,
   InlineWrapper,
   TypographyDate,
-} from './ChatPanelStyles';
-import {List, Typography, ListItemAvatar, Avatar} from '@material-ui/core';
+} from "./ChatPanelStyles";
+import { List, Typography, ListItemAvatar, Avatar } from "@material-ui/core";
+import { useQuery } from "react-query";
+import { getSummaryMessages } from "../../../services/messages/messages.service";
+import SkeletonChatPanel from "./SkeletonChatPanel/SkeletonChatPanel";
+
+export interface IMessagesSummary {
+  id: number;
+  body: string;
+  first_name: string;
+  email: string;
+  picture: string;
+  createdAt: Date;
+}
 
 const ChatPanel = () => {
+  const { isLoading, data: messages } = useQuery(
+    "getSummaryMessages",
+    getSummaryMessages
+  );
+
   return (
     <ChatPanelWrapper>
       <List>
-        <ListItemUserChat button component="a" alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar src="https://i.pinimg.com/236x/bc/9a/8f/bc9a8f53ab34d2aa343002cf7952657c.jpg" />
-          </ListItemAvatar>
-          <UserNameAndLastMessageTextWrapper
-            primary={
-              <InlineWrapper>
-                <Typography>Ban</Typography>
-                <TypographyDate>09/09/2020</TypographyDate>
-              </InlineWrapper>
-            }
-            secondary={
-              <Typography component="span" variant="body2" color="textPrimary">
-                Maybe we should go to king island
-              </Typography>
-            }
-          />
-        </ListItemUserChat>
-
-        <ListItemUserChat button component="a" alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar src="https://i.pinimg.com/originals/47/d4/41/47d441829098c2df1cefbcf63a05324b.jpg" />
-          </ListItemAvatar>
-          <UserNameAndLastMessageTextWrapper
-            primary={
-              <InlineWrapper>
-                <Typography>Meliodas</Typography>
-                <TypographyDate>08/09/2020</TypographyDate>
-              </InlineWrapper>
-            }
-            secondary={
-              <Typography component="span" variant="body2" color="textPrimary">
-                Wish I could come, but I'm out of town this…
-              </Typography>
-            }
-          />
-        </ListItemUserChat>
+        {isLoading ? (
+          <SkeletonChatPanel />
+        ) : (
+          <>
+            {messages &&
+              messages.map((message) => (
+                <ListItemUserChat key={message.id} button component="a" alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar src={message.picture} />
+                  </ListItemAvatar>
+                  <UserNameAndLastMessageTextWrapper
+                    primary={
+                      <InlineWrapper>
+                        <Typography>{message.first_name}</Typography>
+                        <TypographyDate>
+                          {new Date(message.createdAt).toLocaleString("pt-BR")}
+                        </TypographyDate>
+                      </InlineWrapper>
+                    }
+                    secondary={
+                      <Typography
+                        noWrap={true}
+                        component="span"
+                        variant="body2"
+                        color="textPrimary"
+                      >
+                        {message.body}
+                      </Typography>
+                    }
+                  />
+                </ListItemUserChat>
+              ))}
+          </>
+        )}
       </List>
     </ChatPanelWrapper>
   );

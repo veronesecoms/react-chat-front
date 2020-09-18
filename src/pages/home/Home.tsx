@@ -7,7 +7,7 @@ import {
   GridSearchInput,
   GridChatPanel,
 } from "./HomeStyles";
-import SearchInput from "../../components/styled/search-input";
+import SearchInput from "../../components/shared-styled-components/search-input";
 import { InputAdornment, Grid } from "@material-ui/core";
 import ChatPanel from "./ChatPanel/ChatPanel";
 import ChatConversation from "./ChatConversation/ChatConversation";
@@ -17,7 +17,7 @@ const Home = () => {
     <>
       <Header></Header>
       <HomeWrapper>
-        <HomeContainer wrap maxWidth="lg">
+        <HomeContainer maxWidth="lg">
           <Grid wrap="wrap" spacing={1} container>
             <Grid wrap="nowrap" item md={4} container direction="column">
               <GridSearchInput item md={12}>

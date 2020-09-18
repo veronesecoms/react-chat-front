@@ -17,9 +17,9 @@ import { IRequestResponse } from "../../../interfaces/request-response.interface
 import { login } from "../../../services/users/user.service";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import ButtonLoadingSvgAnimated from "../../../components/styled/button-loading-svg-animated";
+import ButtonLoadingSvgAnimated from "../../../components/shared-styled-components/button-loading-svg-animated";
 import { ProviderContext, useSnackbar } from "notistack";
-import SoftInputField from "../../../components/styled/soft-textfield";
+import SoftInputField from "../../../components/shared-styled-components/soft-textfield";
 
 export interface ILoginUser {
   email: string;

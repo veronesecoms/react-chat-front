@@ -14,13 +14,13 @@ import {useFormik} from 'formik';
 import {useMutation} from 'react-query';
 import {AxiosResponse, AxiosError} from 'axios';
 import {useHistory} from 'react-router';
-import ButtonLoadingSvgAnimated from '../../../components/styled/button-loading-svg-animated';
+import ButtonLoadingSvgAnimated from '../../../components/shared-styled-components/button-loading-svg-animated';
 import { useSnackbar, ProviderContext } from 'notistack';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import { sendEmailRecoveryPassword } from '../../../services/users/user.service';
 import { IRecoveryPasswordEmail } from '../../../interfaces/recovery-password-user.interface';
 import EmailIcon from './BannerRightRegisterRecoveryPasswordStyles';
-import SoftInputField from '../../../components/styled/soft-textfield';
+import SoftInputField from '../../../components/shared-styled-components/soft-textfield';
 
 const BannerRightRecoveryPassword = () => {
   const history = useHistory();
