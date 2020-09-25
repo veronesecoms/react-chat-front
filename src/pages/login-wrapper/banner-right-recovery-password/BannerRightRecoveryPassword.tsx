@@ -1,4 +1,4 @@
-import {Grid, TextField} from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {
@@ -40,7 +40,7 @@ const BannerRightRecoveryPassword = () => {
   });
   const redirectToLogin = () => {
     setTimeout(function () {
-      history.push('/login');
+      history.push('/');
     }, 2000);
   };
   const schema = Yup.object().shape({
@@ -90,6 +90,7 @@ const BannerRightRecoveryPassword = () => {
             <RegisterButton
               type="submit"
               fullWidth
+              id="send-email-button"
               variant="contained"
               disabled={isLoading}
               color="primary">

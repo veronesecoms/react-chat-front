@@ -2,44 +2,36 @@ import React from "react";
 import Header from "./header/Header";
 import {
   HomeWrapper,
-  SearchInputIcon,
   HomeContainer,
-  GridSearchInput,
   GridChatPanel,
 } from "./HomeStyles";
-import SearchInput from "../../components/shared-styled-components/search-input";
-import { InputAdornment, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import ChatPanel from "./ChatPanel/ChatPanel";
 import ChatConversation from "./ChatConversation/ChatConversation";
+import MessageProvider from "../../contexts/MessagesContext";
+import SearchUser from "./SearchUser/SearchUser";
+
+export interface ISearchUser {
+  email: string
+}
 
 const Home = () => {
+
   return (
     <>
       <Header></Header>
       <HomeWrapper>
         <HomeContainer maxWidth="lg">
           <Grid wrap="wrap" spacing={1} container>
-            <Grid wrap="nowrap" item md={4} container direction="column">
-              <GridSearchInput item md={12}>
-                <SearchInput
-                  fullWidth={true}
-                  label="Procurar pelo email"
-                  variant="filled"
-                  size="small"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SearchInputIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </GridSearchInput>
-              <GridChatPanel item md={12}>
-                <ChatPanel />
-              </GridChatPanel>
-            </Grid>
-            <ChatConversation />
+            <MessageProvider>
+              <Grid wrap="nowrap" item md={4} container direction="column">
+                <SearchUser/>
+                <GridChatPanel item md={12}>
+                  <ChatPanel />
+                </GridChatPanel>
+              </Grid>
+              <ChatConversation />
+            </MessageProvider>
           </Grid>
         </HomeContainer>
       </HomeWrapper>

@@ -124,6 +124,7 @@ const BannerRightLogin = () => {
           <Grid item md={12}>
             <LoginButton
               type="submit"
+              id="login-button"
               disabled={isLoading}
               fullWidth
               variant="contained"

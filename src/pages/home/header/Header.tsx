@@ -102,6 +102,7 @@ const Header = () => {
                 onChange={handleChangeImage}
               />
               <Avatar
+                id="profile-picture"
                 src={loggedUserPicture}
                 onError={(e) => {
                   e.target.onerror = null;

@@ -14,7 +14,7 @@ import BannerRightConfirmRecoveryPassword from "./banner-right-confirm-recovery-
 
 const LoginWrapper = () => {
   const routes = [
-    { path: "/login", component: BannerRightLogin },
+    { path: "/", component: BannerRightLogin },
     { path: "/register", component: BannerRightRegister },
     { path: "/confirmEmail/:token", component: BannerRightConfirmEmail },
     { path: "/recoveryPassword", component: BannerRightRecoveryPassword },

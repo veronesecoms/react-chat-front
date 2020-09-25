@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChatPanelWrapper,
   UserNameAndLastMessageTextWrapper,
@@ -8,8 +8,12 @@ import {
 } from "./ChatPanelStyles";
 import { List, Typography, ListItemAvatar, Avatar } from "@material-ui/core";
 import { useQuery } from "react-query";
-import { getSummaryMessages } from "../../../services/messages/messages.service";
+import {
+  getSummaryMessages,
+  getUserMessages,
+} from "../../../services/messages/messages.service";
 import SkeletonChatPanel from "./SkeletonChatPanel/SkeletonChatPanel";
+import { useMessages } from "../../../contexts/MessagesContext";
 
 export interface IMessagesSummary {
   id: number;
@@ -20,8 +24,33 @@ export interface IMessagesSummary {
   createdAt: Date;
 }
 
+export interface IMessage {
+  id: number;
+  body: string;
+  to_user_id: number;
+  from_user_id: number;
+  createdAt: Date;
+  email: string;
+  picture: string;
+  first_name: string;
+}
+
 const ChatPanel = () => {
-  const { isLoading, data: messages } = useQuery(
+  const { setMessages } = useMessages();
+  const [userEmailSelected, setUserEmailSelected] = useState<string | null>(
+    null
+  );
+  useQuery(
+    ["getMessagesFromUser", userEmailSelected],
+    getUserMessages,
+    {
+      enabled: userEmailSelected !== null,
+      onSuccess: (dataMessages: IMessage[]) => {
+        setMessages(dataMessages);
+      },
+    }
+  );
+  const { isLoading, data: summaryMessages } = useQuery(
     "getSummaryMessages",
     getSummaryMessages
   );
@@ -33,9 +62,15 @@ const ChatPanel = () => {
           <SkeletonChatPanel />
         ) : (
           <>
-            {messages &&
-              messages.map((message) => (
-                <ListItemUserChat key={message.id} button component="a" alignItems="flex-start">
+            {summaryMessages &&
+              summaryMessages.map((message) => (
+                <ListItemUserChat
+                  key={message.id}
+                  onClick={() => setUserEmailSelected(message.email)}
+                  button
+                  component="a"
+                  alignItems="flex-start"
+                >
                   <ListItemAvatar>
                     <Avatar src={message.picture} />
                   </ListItemAvatar>

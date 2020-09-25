@@ -41,7 +41,7 @@ const BannerRightConfirmRecoveryPassword = () => {
     }
   });
   const redirectToLogin = () => {
-    history.push('/login');
+    history.push('/');
   };
   const schema = Yup.object().shape({
     password: Yup.string()
@@ -132,7 +132,7 @@ const BannerRightConfirmRecoveryPassword = () => {
           </Grid>
 
           <Grid item md={4}>
-            <BackButton variant="outlined" component={Link} to="/login" fullWidth>
+            <BackButton variant="outlined" component={Link} to="/" fullWidth>
               Voltar
             </BackButton>
           </Grid>

@@ -33,7 +33,7 @@ const BannerRightConfirmEmail = () => {
 
   const redirectToLogin = () => {
     setTimeout(function(){
-      history.push('/login');
+      history.push('/');
     }, 3000);
   };
 
@@ -78,7 +78,7 @@ const BannerRightConfirmEmail = () => {
               </GrayParagraphy>
             </Grid>
             <Grid item xs={12}>
-            <Link to="/login">
+            <Link to="/">
               <Button type="button" fullWidth={true} variant="outlined" color="primary">
                 Voltar para login
               </Button>
