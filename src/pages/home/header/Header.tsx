@@ -81,13 +81,19 @@ const Header = () => {
     inputFileRef.current?.click();
   };
 
+  const testReactSpy = () => {
+    console.log("oi");
+  };
+
   return (
     <FixedHeader maxWidth="lg">
       <HeaderBase container justify="space-between" alignItems="center">
         <Grid item>
           <DivLogo>
             <ChatIcon />
-            <BannerText>React Chat</BannerText>
+            <BannerText id="banner-text" onClick={testReactSpy}>
+              React Chat
+            </BannerText>
           </DivLogo>
         </Grid>
         <Grid item>
@@ -113,7 +119,7 @@ const Header = () => {
               <ChangeIcon />
             </AvatarCircle>
             <DivCredentials>
-              <UserName>{loggedUserName}</UserName>
+              <UserName id="name-user-logged">{loggedUserName}</UserName>
               <UserEmail>{loggedUserEmail}</UserEmail>
             </DivCredentials>
           </DivPerfil>

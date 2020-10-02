@@ -2,54 +2,55 @@ import { InputAdornment } from '@material-ui/core';
 import React, { useState } from 'react';
 import SearchInput from '../../../components/shared-styled-components/search-input';
 import { GridSearchInput, SearchInputIcon } from '../HomeStyles';
-import {useFormik} from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ProviderContext, useSnackbar } from 'notistack';
 import { useMessages } from '../../../contexts/MessagesContext';
 import { useQuery } from 'react-query';
 import { getUserMessages } from '../../../services/messages/messages.service';
-import { IMessage } from '../ChatPanel/ChatPanel';
+import IMessage from '../../../interfaces/message.interface';
 import { AxiosError } from 'axios';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
-import { ISearchUser } from '../Home';
+import { useEmailDestinatary } from '../../../contexts/EmailDestinataryContext';
+
+export interface ISearchUser {
+  email: string;
+}
 
 const SearchUser = () => {
-
   const snackBar: ProviderContext = useSnackbar();
-  const [searchedEmail, setSearchedEmail] = useState<string | null>(null)
-  const {setMessages} = useMessages()
+  const [searchedEmail, setSearchedEmail] = useState<string | null>(null);
+  const { setMessages } = useMessages();
+  const { setEmailDestinatary } = useEmailDestinatary();
 
-  useQuery(
-    ["getMessagesFromUser", searchedEmail],
-    getUserMessages,
-    {
-      enabled: searchedEmail !== null,
-      refetchOnWindowFocus: false,
-      retry: false,
-      onSuccess: (dataMessages: IMessage[]) => {
-        setMessages(dataMessages);
-      },
-      onError: (error: AxiosError<IRequestResponse>) => {
-        snackBar.enqueueSnackbar(error.response?.data.message, {
-          variant: "error",
-        });
-      },
-    }
-  );
+  useQuery(['getMessagesFromUser', searchedEmail], getUserMessages, {
+    enabled: searchedEmail !== null,
+    refetchOnWindowFocus: false,
+    retry: false,
+    onSuccess: (dataMessages: IMessage[]) => {
+      setMessages(dataMessages);
+      setEmailDestinatary(searchedEmail);
+    },
+    onError: (error: AxiosError<IRequestResponse>) => {
+      snackBar.enqueueSnackbar(error.response?.data.message, {
+        variant: 'error',
+      });
+    },
+  });
 
   const searchSchemaValidation = Yup.object().shape({
     email: Yup.string()
       .required('Necessário informar o e-mail')
-      .email('Não possui formato válido')
+      .email('Não possui formato válido'),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: ''
+      email: '',
     },
     validationSchema: searchSchemaValidation,
     onSubmit: (searchUserData: ISearchUser) => {
-      setSearchedEmail(searchUserData.email)
+      setSearchedEmail(searchUserData.email);
     },
   });
 
@@ -77,8 +78,7 @@ const SearchUser = () => {
         />
       </form>
     </GridSearchInput>
-  )
+  );
+};
 
-}
-
-export default SearchUser
+export default SearchUser;
