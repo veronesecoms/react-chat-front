@@ -1,6 +1,7 @@
 import api from '../api';
 import IMessage from '../../interfaces/message.interface';
 import IMessagesSummary from '../../interfaces/message-summary';
+import { IMessageSave } from '../../pages/home/ChatConversation/SendMessageInput/SendMessageInput';
 
 const getSummaryMessages = async (): Promise<IMessagesSummary[]> => {
   const { data } = await api.get<IMessagesSummary[]>('/messages/summary');
@@ -17,4 +18,11 @@ const getUserMessages = async (
   return data;
 };
 
-export { getSummaryMessages, getUserMessages };
+const createMessage = async (messageObj: IMessageSave): Promise<IMessage> => {
+  const { data } = await api.post<IMessage>('/messages', {
+    messageObj,
+  });
+  return data;
+};
+
+export { getSummaryMessages, getUserMessages, createMessage };

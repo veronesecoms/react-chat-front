@@ -7,14 +7,48 @@ import {
 } from './SendMessageInputStyles';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import { useSocket } from '../../../../contexts/SocketContext';
+import { useMutation } from 'react-query';
+import { AxiosError } from 'axios';
+import { IRequestResponse } from '../../../../interfaces/request-response.interface';
+import IMessage from '../../../../interfaces/message.interface';
+import { createMessage } from '../../../../services/messages/messages.service';
+import { useEmailDestinatary } from '../../../../contexts/EmailDestinataryContext';
+
+export interface IMessageSave {
+  token: string;
+  emailDestinatary: string;
+  message: string;
+}
 
 const SendMessageInput = () => {
   const { socket, roomId } = useSocket();
+  const { emailDestinatary } = useEmailDestinatary();
   const [message, setMessage] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
+    emitMessageWithSocket();
+    saveMessageOnServer();
+  };
+  const [mutateSaveMessage] = useMutation<
+    IMessage,
+    AxiosError<IRequestResponse>,
+    IMessageSave
+  >(createMessage, {
+    onSuccess: (message: IMessage) => {
+      console.log(message);
+    },
+  });
+
+  const emitMessageWithSocket = () => {
     socket.emit('message', { roomId: roomId, message: message });
-    console.log('emitiu menssagem pro servidor');
+  };
+
+  const saveMessageOnServer = () => {
+    mutateSaveMessage({
+      token: localStorage.getItem('token')!,
+      emailDestinatary: emailDestinatary,
+      message: message,
+    });
   };
 
   return (
