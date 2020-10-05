@@ -1,7 +1,7 @@
-import React from "react";
-import Skeleton from "@material-ui/lab/Skeleton";
-import { ListItem, ListItemAvatar } from "@material-ui/core";
-import { UserNameAndLastMessageTextWrapper } from "../ChatPanelStyles";
+import React from 'react';
+import Skeleton from '@material-ui/lab/Skeleton';
+import { ListItem, ListItemAvatar } from '@material-ui/core';
+import { UserNameAndLastMessageTextWrapper } from '../ChatPanelStyles';
 
 const SkeletonChatPanel = () => {
   return (
@@ -28,10 +28,10 @@ const SkeletonChatPanel = () => {
           <Skeleton
             animation="wave"
             height={10}
-            width="100%"
+            width="50%"
             style={{ marginBottom: 6 }}
           />
-          <Skeleton animation="wave" height={10} width="40%" />
+          <Skeleton animation="wave" height={10} width="25%" />
         </UserNameAndLastMessageTextWrapper>
       </ListItem>
       <ListItem>
@@ -42,10 +42,10 @@ const SkeletonChatPanel = () => {
           <Skeleton
             animation="wave"
             height={10}
-            width="100%"
+            width="45%"
             style={{ marginBottom: 6 }}
           />
-          <Skeleton animation="wave" height={10} width="40%" />
+          <Skeleton animation="wave" height={10} width="85%" />
         </UserNameAndLastMessageTextWrapper>
       </ListItem>
       <ListItem>

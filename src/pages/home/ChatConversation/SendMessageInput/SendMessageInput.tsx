@@ -7,12 +7,13 @@ import {
 } from './SendMessageInputStyles';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import { useSocket } from '../../../../contexts/SocketContext';
-import { useMutation } from 'react-query';
+import { queryCache, useMutation } from 'react-query';
 import { AxiosError } from 'axios';
 import { IRequestResponse } from '../../../../interfaces/request-response.interface';
 import IMessage from '../../../../interfaces/message.interface';
 import { createMessage } from '../../../../services/messages/messages.service';
 import { useEmailDestinatary } from '../../../../contexts/EmailDestinataryContext';
+import { useMessages } from '../../../../contexts/MessagesContext';
 
 export interface IMessageSave {
   token: string;
@@ -21,26 +22,32 @@ export interface IMessageSave {
 }
 
 const SendMessageInput = () => {
+  const { messages } = useMessages();
   const { socket, roomId } = useSocket();
   const { emailDestinatary } = useEmailDestinatary();
   const [message, setMessage] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
-    emitMessageWithSocket();
-    saveMessageOnServer();
+    if (message) {
+      emitMessageWithSocket();
+      saveMessageOnServer();
+    }
+    setMessage('');
   };
   const [mutateSaveMessage] = useMutation<
     IMessage,
     AxiosError<IRequestResponse>,
     IMessageSave
   >(createMessage, {
-    onSuccess: (message: IMessage) => {
-      console.log(message);
+    onSuccess: () => {
+      queryCache.invalidateQueries('getSummaryMessages');
     },
   });
 
   const emitMessageWithSocket = () => {
-    socket.emit('message', { roomId: roomId, message: message });
+    const messageWithRoomId = { roomId: roomId, message: message };
+    socket.emit('message', messageWithRoomId);
+    addMessageToChat(messageWithRoomId);
   };
 
   const saveMessageOnServer = () => {
@@ -51,6 +58,21 @@ const SendMessageInput = () => {
     });
   };
 
+  const addMessageToChat = (messageData) => {
+    const messageToBeAdded = {
+      ...messageData,
+      id: Date.now(),
+      createdAt: Date.now(),
+      email: localStorage.getItem('email'),
+      body: messageData.message,
+    };
+    const messagesInContext = [...messages, messageToBeAdded];
+    queryCache.setQueryData(
+      ['getMessagesFromUser', emailDestinatary],
+      messagesInContext
+    );
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -59,11 +81,16 @@ const SendMessageInput = () => {
             <MessageInput
               label="Digite uma mensagem"
               variant="filled"
+              value={message}
               size="small"
               fullWidth={true}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <IconButtonWrapper color="secondary" aria-label="delete">
+            <IconButtonWrapper
+              type="submit"
+              color="secondary"
+              aria-label="delete"
+            >
               <SendRoundedIcon />
             </IconButtonWrapper>
           </GridInput>

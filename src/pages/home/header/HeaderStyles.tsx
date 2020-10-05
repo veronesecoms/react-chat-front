@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
-import { Container, Grid } from "@material-ui/core";
-import CachedIcon from "@material-ui/icons/Cached";
-import rotate from "../../../utils/animations/rotate";
+import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
+import { Container, Grid } from '@material-ui/core';
+import CachedIcon from '@material-ui/icons/Cached';
+import rotate from '../../../utils/animations/rotate';
 
 const HeaderBase = styled(Grid)`
   height: 70px;
@@ -19,7 +19,7 @@ const ChatIcon = styled(SmsOutlinedIcon)`
 
 const BannerText = styled.h6`
   color: #fafafa;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-size: 15px;
   opacity: 95%;
   margin-left: 5px;
@@ -70,7 +70,13 @@ const UserEmail = styled.p`
 `;
 
 const DivCredentials = styled.div`
+  padding: 5px;
   margin-left: 15px;
+  border-radius: 3px;
+  transition-duration: 0.5s;
+  &:hover {
+    background-color: #80808029;
+  }
 `;
 
 const FixedHeader = styled(Container)`
@@ -98,6 +104,19 @@ const HiddenInputFile = styled.input`
   display: none;
 `;
 
+const MenuAnchor = styled.a`
+  transition-duration: 2s;
+  animation-duration: 1s;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 1;
+  &:hover {
+    background-color: white !important;
+  }
+`;
+
 export {
   HeaderBase,
   ChatIcon,
@@ -112,4 +131,5 @@ export {
   FixedHeader,
   ChangeIcon,
   HiddenInputFile,
+  MenuAnchor,
 };

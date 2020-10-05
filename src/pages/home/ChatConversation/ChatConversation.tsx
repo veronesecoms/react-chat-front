@@ -6,13 +6,15 @@ import {
   ConversationWrapper,
   GridChatConversation,
   GridIconOptions,
+  EmailDestinataryText,
+  GridChatHeader,
 } from './ChatConversationStyles';
 import DestinataryMessage from './DestinataryMessage/DestinataryMessage';
 import UserMessage from './UserMessage/UserMessage';
 import SendMessageInput from './SendMessageInput/SendMessageInput';
 import { useEmailDestinatary } from '../../../contexts/EmailDestinataryContext';
 import socketIOClient from 'socket.io-client';
-import { useMutation, useQuery } from 'react-query';
+import { queryCache, useMutation, useQuery } from 'react-query';
 import { getUserMessages } from '../../../services/messages/messages.service';
 import IMessage from '../../../interfaces/message.interface';
 import { useMessages } from '../../../contexts/MessagesContext';
@@ -49,6 +51,7 @@ const ChatConversation = () => {
         mutateCreateRoom(emailDestinatary);
       } else {
         joinRoom(roomId);
+        listenToRoomMessages();
       }
     },
   });
@@ -60,41 +63,74 @@ const ChatConversation = () => {
   >(createRoom, {
     onSuccess: (roomId: number) => {
       joinRoom(roomId);
+      listenToRoomMessages();
     },
   });
 
   const joinRoom = (idRoom: number) => {
     setRoomId(idRoom);
-    socket.on('room_message', (data) => {
-      console.log(data);
-    });
     socket.emit('join_room', idRoom);
+  };
+
+  const listenToRoomMessages = () => {
+    socket.on('room_message', (data) => {
+      addMessageToChat(data);
+      refreshChatPanel();
+    });
+  };
+
+  const addMessageToChat = (messageData) => {
+    const messageToBeAdded = {
+      id: Date.now(),
+      createdAt: Date.now(),
+      body: messageData,
+    };
+    const messagesInContext = [...messages, messageToBeAdded];
+    queryCache.setQueryData(
+      ['getMessagesFromUser', emailDestinatary],
+      messagesInContext
+    );
+  };
+
+  const refreshChatPanel = () => {
+    queryCache.invalidateQueries('getSummaryMessages');
   };
 
   return (
     <GridChatConversation item md={8}>
       <ConversationWrapper>
-        <Grid direction="row" container>
-          <GridIconOptions container justify="flex-end" item md={12}>
-            {emailDestinatary}
-            <IconButton color="secondary" aria-label="delete">
-              <SettingsOutlinedIcon />
-            </IconButton>
-          </GridIconOptions>
-          <ChatContainer>
-            <>
-              {messages &&
-                messages.map((message) =>
-                  message.email === loggedUserEmail ? (
-                    <UserMessage message={message} key={message.id} />
-                  ) : (
-                    <DestinataryMessage message={message} key={message.id} />
-                  )
-                )}
-            </>
-          </ChatContainer>
-          <SendMessageInput />
-        </Grid>
+        {emailDestinatary && (
+          <Grid
+            direction="row"
+            container
+            alignItems="center"
+            justify="space-between"
+          >
+            <GridChatHeader justify="space-between" item container md={12}>
+              <Grid item>
+                <EmailDestinataryText>{emailDestinatary}</EmailDestinataryText>
+              </Grid>
+              <GridIconOptions item>
+                <IconButton color="secondary" aria-label="delete">
+                  <SettingsOutlinedIcon />
+                </IconButton>
+              </GridIconOptions>
+            </GridChatHeader>
+            <ChatContainer>
+              <>
+                {messages &&
+                  messages.map((message) =>
+                    message.email === loggedUserEmail ? (
+                      <UserMessage message={message} key={message.id} />
+                    ) : (
+                      <DestinataryMessage message={message} key={message.id} />
+                    )
+                  )}
+              </>
+            </ChatContainer>
+            <SendMessageInput />
+          </Grid>
+        )}
       </ConversationWrapper>
     </GridChatConversation>
   );

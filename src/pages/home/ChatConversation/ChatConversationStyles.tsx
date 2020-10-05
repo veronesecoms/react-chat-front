@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Typography } from '@material-ui/core';
 
 const ConversationWrapper = styled.div`
   height: 80vh;
@@ -10,6 +10,20 @@ const ConversationWrapper = styled.div`
 `;
 
 const GridChatConversation = styled(Grid)``;
+
+const EmailDestinataryText = styled(Typography)`
+  color: #fafafa;
+  opacity: 90%;
+  padding: 15px;
+`;
+
+const GridChatHeader = styled(Grid)`
+  height: 55px;
+  border-bottom: 6px solid #542673;
+  background-color: #5c4f82;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+`;
 
 const GridIconOptions = styled(Grid)`
   position: sticky;
@@ -33,4 +47,6 @@ export {
   GridIconOptions,
   TestTypography,
   ChatContainer,
+  EmailDestinataryText,
+  GridChatHeader,
 };
