@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {ListItemText, ListItem} from '@material-ui/core';
+import { ListItemText, ListItem, List } from '@material-ui/core';
 
 const ChatPanelWrapper = styled.div`
   width: 100%;
@@ -19,6 +19,11 @@ const UserNameAndLastMessageTextWrapper = styled(ListItemText)`
       color: #bfbaba;
     }
   }
+`;
+
+const MessageList = styled(List)`
+  padding-top: 0px;
+  padding-bottom: 0px;
 `;
 
 const ListItemUserChat = styled(ListItem)`
@@ -53,4 +58,5 @@ export {
   ListItemUserChat,
   InlineWrapper,
   TypographyDate,
+  MessageList,
 };

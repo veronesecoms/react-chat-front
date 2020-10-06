@@ -1,17 +1,12 @@
-import { Avatar, Grid } from "@material-ui/core";
-import React from "react";
-import { IMessage } from "../../ChatPanel/ChatPanel";
+import { Avatar, Grid } from '@material-ui/core';
+import React from 'react';
 import {
   DestinataryName,
   MessageContainer,
   MessageTime,
-} from "./DestinataryMessageStyles";
+} from './DestinataryMessageStyles';
 
-type MessageProps = {
-  message: IMessage;
-};
-
-const DestinataryMessage = ({ message }: MessageProps) => {
+const DestinataryMessage = ({ message }) => {
   return (
     <>
       <Grid
@@ -28,21 +23,23 @@ const DestinataryMessage = ({ message }: MessageProps) => {
           wrap="nowrap"
           alignItems="center"
           item
+          xs={2}
           md={1}
+          sm={1}
         >
           <Grid item>
             <Avatar src={message.picture} />
           </Grid>
           <Grid item>
             <MessageTime>
-              {new Date(message.createdAt).toLocaleTimeString("pt-BR", {
-                hour: "numeric",
-                minute: "numeric",
+              {new Date(message.createdAt).toLocaleTimeString('pt-BR', {
+                hour: 'numeric',
+                minute: 'numeric',
               })}
             </MessageTime>
           </Grid>
         </Grid>
-        <Grid item>
+        <Grid item xs={10} md="auto">
           <MessageContainer>
             <DestinataryName>{message.first_name}</DestinataryName>
             {message.body}

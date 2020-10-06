@@ -17,10 +17,10 @@ import { registerUser } from '../../../services/users/user.service';
 import { useMutation } from 'react-query';
 import { AxiosResponse, AxiosError } from 'axios';
 import { useHistory } from 'react-router';
-import ButtonLoadingSvgAnimated from '../../../components/shared-styled-components/button-loading-svg-animated';
+import ButtonLoadingSvgAnimated from '../../../components/styled-components/button-loading-svg-animated';
 import { useSnackbar, ProviderContext } from 'notistack';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
-import SoftInputField from '../../../components/shared-styled-components/soft-textfield';
+import SoftInputField from '../../../components/styled-components/soft-textfield';
 
 const BannerRightRegister = () => {
   const history = useHistory();

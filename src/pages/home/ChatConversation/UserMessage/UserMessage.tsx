@@ -1,13 +1,8 @@
-import { Grid } from "@material-ui/core";
-import React from "react";
-import { IMessage } from "../../ChatPanel/ChatPanel";
-import { HoursMessageSended, MessageContainer } from "./UserMessageStyles";
+import { Grid } from '@material-ui/core';
+import React from 'react';
+import { HoursMessageSended, MessageContainer } from './UserMessageStyles';
 
-type MessageProps = {
-  message: IMessage;
-};
-
-const UserMessage = ({ message }: MessageProps) => {
+const UserMessage = ({ message }) => {
   return (
     <>
       <Grid
@@ -28,9 +23,9 @@ const UserMessage = ({ message }: MessageProps) => {
           <Grid item>
             <MessageContainer>
               <HoursMessageSended>
-                {new Date(message.createdAt).toLocaleTimeString("pt-BR", {
-                  hour: "numeric",
-                  minute: "numeric",
+                {new Date(message.createdAt).toLocaleTimeString('pt-BR', {
+                  hour: 'numeric',
+                  minute: 'numeric',
                 })}
               </HoursMessageSended>
               {message.body}

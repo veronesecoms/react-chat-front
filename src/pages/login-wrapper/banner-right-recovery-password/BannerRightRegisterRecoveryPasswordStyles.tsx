@@ -13,4 +13,4 @@ const EmailIcon = styled(MailOutlineIcon)`
   }
 `;
 
-export default EmailIcon
+export default EmailIcon;

@@ -15,7 +15,7 @@ import { useMutation } from 'react-query';
 import { AxiosResponse, AxiosError } from 'axios';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import ButtonLoadingSvgAnimated from '../../../components/shared-styled-components/button-loading-svg-animated';
+import ButtonLoadingSvgAnimated from '../../../components/styled-components/button-loading-svg-animated';
 import { useSnackbar, ProviderContext } from 'notistack';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import { IConfirmRecoveryPassword } from '../../../interfaces/confirm-recovery-password-user.interface';

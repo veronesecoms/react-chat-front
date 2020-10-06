@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MessageInput from '../../../../components/shared-styled-components/message-input';
+import MessageInput from '../../../../components/styled-components/message-input';
 import {
   GridContainerMessage,
   IconButtonWrapper,
@@ -77,7 +77,7 @@ const SendMessageInput = () => {
     <>
       <form onSubmit={handleSubmit}>
         <GridContainerMessage alignItems="center" container direction="row">
-          <GridInput item md={12}>
+          <GridInput item xs={12} md={12}>
             <MessageInput
               label="Digite uma mensagem"
               variant="filled"

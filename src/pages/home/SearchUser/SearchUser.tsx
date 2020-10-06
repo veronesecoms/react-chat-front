@@ -1,6 +1,6 @@
 import { InputAdornment } from '@material-ui/core';
 import React, { useState } from 'react';
-import SearchInput from '../../../components/shared-styled-components/search-input';
+import SearchInput from '../../../components/styled-components/search-input';
 import { GridSearchInput, SearchInputIcon } from '../HomeStyles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -55,7 +55,7 @@ const SearchUser = () => {
   });
 
   return (
-    <GridSearchInput item md={12}>
+    <GridSearchInput item xs={12} sm={12} md={12}>
       <form onSubmit={formik.handleSubmit} noValidate>
         <SearchInput
           value={formik.values.email}

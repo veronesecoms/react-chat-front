@@ -9,20 +9,20 @@ const EmailConfirmationContainer = styled.div`
   top: 50%;
   justify-content: center;
   transform: translateY(-50%);
-`
+`;
 
 const HalfCardRightConfirmEmail = styled.div`
   width: 50%;
   height: 50%;
   border-radius: 4px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   padding: 20px;
 `;
 
 const GrayParagraphy = styled.p`
   color: #6f6f6f;
   text-align: center;
-`
+`;
 
 const VerifiedEmailIcon = styled(VerifiedUserIcon)`
   && {
@@ -34,7 +34,7 @@ const VerifiedEmailIcon = styled(VerifiedUserIcon)`
     font-size: 60px;
     color: #d3d925;
   }
-`
+`;
 
 const ErrorVerifiedEmailIcon = styled(ErrorOutlineIcon)`
   && {
@@ -46,6 +46,12 @@ const ErrorVerifiedEmailIcon = styled(ErrorOutlineIcon)`
     font-size: 60px;
     color: #d3d925;
   }
-`
+`;
 
-export { VerifiedEmailIcon, HalfCardRightConfirmEmail, GrayParagraphy, EmailConfirmationContainer, ErrorVerifiedEmailIcon }
+export {
+  VerifiedEmailIcon,
+  HalfCardRightConfirmEmail,
+  GrayParagraphy,
+  EmailConfirmationContainer,
+  ErrorVerifiedEmailIcon,
+};

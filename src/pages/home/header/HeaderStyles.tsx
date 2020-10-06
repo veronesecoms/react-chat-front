@@ -28,7 +28,7 @@ const BannerText = styled.h6`
 const DivLogo = styled.div`
   display: inline-flex;
   align-items: center;
-  @media (max-width: 425px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `;

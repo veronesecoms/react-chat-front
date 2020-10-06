@@ -5,6 +5,7 @@ import {
   ListItemUserChat,
   InlineWrapper,
   TypographyDate,
+  MessageList,
 } from './ChatPanelStyles';
 import { List, Typography, ListItemAvatar, Avatar } from '@material-ui/core';
 import { useQuery } from 'react-query';
@@ -13,7 +14,7 @@ import SkeletonChatPanel from './SkeletonChatPanel/SkeletonChatPanel';
 import { useEmailDestinatary } from '../../../contexts/EmailDestinataryContext';
 
 const ChatPanel = () => {
-  const { setEmailDestinatary } = useEmailDestinatary();
+  const { setEmailDestinatary, emailDestinatary } = useEmailDestinatary();
   const { isLoading, data: summaryMessages } = useQuery(
     'getSummaryMessages',
     getSummaryMessages
@@ -21,7 +22,7 @@ const ChatPanel = () => {
 
   return (
     <ChatPanelWrapper>
-      <List>
+      <MessageList>
         {isLoading ? (
           <SkeletonChatPanel />
         ) : (
@@ -29,6 +30,7 @@ const ChatPanel = () => {
             {summaryMessages &&
               summaryMessages.map((message) => (
                 <ListItemUserChat
+                  selected={emailDestinatary === message.email ? true : false}
                   key={message.id}
                   onClick={() => setEmailDestinatary(message.email)}
                   button
@@ -62,7 +64,7 @@ const ChatPanel = () => {
               ))}
           </>
         )}
-      </List>
+      </MessageList>
     </ChatPanelWrapper>
   );
 };
