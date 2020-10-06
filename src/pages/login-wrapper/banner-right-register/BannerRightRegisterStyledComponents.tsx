@@ -12,14 +12,14 @@ const RegisterFaceIcon = styled(FaceIcon)`
     font-size: 60px;
     color: #d3d925;
   }
-`
+`;
 
 const RegisterButton = styled(Button)`
   height: 45px;
-`
+`;
 
 const BackButton = styled(Button)`
   height: 45px;
-`
+`;
 
-export { RegisterFaceIcon, RegisterButton, BackButton }
+export { RegisterFaceIcon, RegisterButton, BackButton };

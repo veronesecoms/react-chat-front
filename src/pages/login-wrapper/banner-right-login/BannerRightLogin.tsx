@@ -1,6 +1,6 @@
-import Grid from "@material-ui/core/Grid";
-import React from "react";
-import { Link } from "react-router-dom";
+import Grid from '@material-ui/core/Grid';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   HalfCardRight,
   TitleRegister,
@@ -9,17 +9,17 @@ import {
   TextLink,
   LoginLockIcon,
   TextAligner,
-} from "./BannerRightLoginStyledComponents";
-import history from "../../../utils/history";
-import { useMutation } from "react-query";
-import { AxiosResponse, AxiosError } from "axios";
-import { IRequestResponse } from "../../../interfaces/request-response.interface";
-import { login } from "../../../services/users/user.service";
-import * as Yup from "yup";
-import { useFormik } from "formik";
-import ButtonLoadingSvgAnimated from "../../../components/shared-styled-components/button-loading-svg-animated";
-import { ProviderContext, useSnackbar } from "notistack";
-import SoftInputField from "../../../components/shared-styled-components/soft-textfield";
+} from './BannerRightLoginStyledComponents';
+import history from '../../../utils/history';
+import { useMutation } from 'react-query';
+import { AxiosResponse, AxiosError } from 'axios';
+import { IRequestResponse } from '../../../interfaces/request-response.interface';
+import { login } from '../../../services/users/user.service';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
+import ButtonLoadingSvgAnimated from '../../../components/shared-styled-components/button-loading-svg-animated';
+import { ProviderContext, useSnackbar } from 'notistack';
+import SoftInputField from '../../../components/shared-styled-components/soft-textfield';
 
 export interface ILoginUser {
   email: string;
@@ -45,30 +45,30 @@ const BannerRightLogin = () => {
     ILoginUser
   >(login, {
     onSuccess: (response: AxiosResponse<ILoginResponse>) => {
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("email", response.data.data.email);
-      localStorage.setItem("first_name", response.data.data.first_name);
-      localStorage.setItem("picture", response.data.data.picture);
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('email', response.data.data.email);
+      localStorage.setItem('first_name', response.data.data.first_name);
+      localStorage.setItem('picture', response.data.data.picture);
       redirectToHome();
     },
     onError: (error: AxiosError<IRequestResponse>) => {
       snackBar.enqueueSnackbar(error.response?.data.message, {
-        variant: "error",
+        variant: 'error',
       });
     },
   });
 
   const schema = Yup.object().shape({
     email: Yup.string()
-      .required("Necessário informar o email")
-      .email("Email não possui formato válido"),
-    password: Yup.string().required("Necessário informar a senha!"),
+      .required('Necessário informar o email')
+      .email('Email não possui formato válido'),
+    password: Yup.string().required('Necessário informar a senha!'),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     validationSchema: schema,
     onSubmit: (user: ILoginUser) => {
@@ -77,7 +77,7 @@ const BannerRightLogin = () => {
   });
 
   const redirectToHome = () => {
-    history.push("/home");
+    history.push('/home');
   };
 
   return (
@@ -90,14 +90,14 @@ const BannerRightLogin = () => {
 
       <form onSubmit={formik.handleSubmit} noValidate>
         <Grid spacing={3} container direction="row">
-          <Grid item md={12}>
+          <Grid item xs={12} sm={12} md={12}>
             <SoftInputField
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              helperText={formik.touched.email ? formik.errors.email : ""}
+              helperText={formik.touched.email ? formik.errors.email : ''}
               error={formik.touched.email && Boolean(formik.errors.email)}
-              fullWidth
+              fullWidth={true}
               id="login-user-email"
               name="email"
               label="Email"
@@ -105,17 +105,17 @@ const BannerRightLogin = () => {
             />
           </Grid>
 
-          <Grid item md={12}>
+          <Grid item xs={12} sm={12} md={12}>
             <SoftInputField
               value={formik.values.password}
               type="password"
+              fullWidth={true}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              helperText={formik.touched.password ? formik.errors.password : ""}
+              helperText={formik.touched.password ? formik.errors.password : ''}
               error={formik.touched.password && Boolean(formik.errors.password)}
               name="password"
               id="login-user-password"
-              fullWidth
               label="Senha"
               variant="filled"
             />
@@ -136,12 +136,12 @@ const BannerRightLogin = () => {
                   Carregando...
                 </>
               ) : (
-                "Entrar"
+                'Entrar'
               )}
             </LoginButton>
           </Grid>
 
-          <Grid item md={12}>
+          <Grid item xs={12} sm={12} md={12}>
             <TextAligner>
               <Link to="/register">
                 <TextLink>Criar uma conta</TextLink>

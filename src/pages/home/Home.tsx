@@ -18,7 +18,14 @@ const Home = () => {
           <Grid wrap="wrap" spacing={1} container>
             <EmailDestinataryProvider>
               <MessagesProvider>
-                <Grid wrap="nowrap" item md={4} container direction="column">
+                <Grid
+                  wrap="nowrap"
+                  spacing={3}
+                  item
+                  md={4}
+                  container
+                  direction="column"
+                >
                   <SearchUser />
                   <GridChatPanel item md={12}>
                     <ChatPanel />

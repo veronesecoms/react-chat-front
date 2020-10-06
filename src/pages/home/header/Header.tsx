@@ -93,7 +93,7 @@ const Header = () => {
   return (
     <FixedHeader maxWidth="lg">
       <HeaderBase container justify="space-between" alignItems="center">
-        <Grid item>
+        <Grid xs={12} sm={3} item>
           <DivLogo>
             <ChatIcon />
             <BannerText id="banner-text">React Chat</BannerText>

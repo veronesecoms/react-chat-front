@@ -69,7 +69,7 @@ const BannerRightRecoveryPassword = () => {
 
       <form onSubmit={formik.handleSubmit} noValidate>
         <Grid spacing={3} container direction="row">
-          <Grid item md={12}>
+          <Grid item xs={12} md={12}>
             <SoftInputField
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -84,7 +84,7 @@ const BannerRightRecoveryPassword = () => {
             />
           </Grid>
 
-          <Grid item md={8}>
+          <Grid item xs={12} md={8}>
             <RegisterButton
               type="submit"
               fullWidth
@@ -104,7 +104,7 @@ const BannerRightRecoveryPassword = () => {
             </RegisterButton>
           </Grid>
 
-          <Grid item md={4}>
+          <Grid item xs={12} md={4}>
             <BackButton variant="outlined" component={Link} to="/" fullWidth>
               Voltar
             </BackButton>

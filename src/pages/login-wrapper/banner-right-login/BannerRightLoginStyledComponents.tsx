@@ -1,4 +1,4 @@
-import {Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import styled from 'styled-components';
 
@@ -9,6 +9,9 @@ const HalfCardRight = styled.div`
   border-radius: 4px;
   background-color: #fafafa;
   padding: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const TitleRegister = styled.h1`
@@ -26,6 +29,9 @@ const GraySeparator = styled.span`
   margin-left: 15px;
   margin-right: 15px;
   color: #7b7b7b;
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 `;
 
 const TextAligner = styled.div`

@@ -28,6 +28,9 @@ const BannerText = styled.h6`
 const DivLogo = styled.div`
   display: inline-flex;
   align-items: center;
+  @media (max-width: 425px) {
+    display: none;
+  }
 `;
 
 const AvatarCircle = styled.div`
@@ -84,6 +87,7 @@ const FixedHeader = styled(Container)`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
 `;
 
 const ChangeIcon = styled(CachedIcon)`
