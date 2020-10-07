@@ -7,7 +7,7 @@ import {
   ILoginResponse,
   ILoginUser,
 } from '../../pages/login-wrapper/banner-right-login/BannerRightLogin';
-import { IPictureUser } from '../../pages/Home/header/Header';
+import { IPictureUser } from '../../pages/Home/Header/Header';
 
 const confirmEmailUser = async (
   token: string
