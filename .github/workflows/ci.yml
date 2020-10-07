@@ -30,8 +30,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-node-modules-
             
-      - name: Yarn Install
-        run: yarn install
+      - name: NPM Install
+        run: npm install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
       - name: Lint
