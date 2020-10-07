@@ -14,6 +14,7 @@
     "@types/react-dom": "^16.9.8",
     "axios": "^0.20.0",
     "formik": "^2.1.5",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "msw": "^0.21.2",
     "notistack": "^1.0.0",
     "react": "^16.13.1",
@@ -32,7 +33,7 @@
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject"
   },
   "browserslist": {
