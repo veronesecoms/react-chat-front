@@ -1,7 +1,7 @@
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
-import * as bubbles from '../../resources/bubble-background.svg';
+import bubbles from '../../resources/bubble-background.svg';
 
 const Wrapper = styled.main`
   display: flex;

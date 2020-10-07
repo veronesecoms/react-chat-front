@@ -12,7 +12,6 @@ import { ITokenConfirmationEmailParam } from '../../../interfaces/token-confirma
 import { confirmEmailUser } from '../../../services/users/user.service';
 import {
   VerifiedEmailIcon,
-  HalfCardRightConfirmEmail,
   GrayParagraphy,
   EmailConfirmationContainer,
   ErrorVerifiedEmailIcon,

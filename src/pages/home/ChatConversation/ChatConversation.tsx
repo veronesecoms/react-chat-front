@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from 'react';
 import { Grid, IconButton } from '@material-ui/core';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';

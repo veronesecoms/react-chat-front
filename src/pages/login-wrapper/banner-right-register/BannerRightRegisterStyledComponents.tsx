@@ -1,4 +1,4 @@
-import styled from '../../Home/node_modules/styled-components';
+import styled from 'styled-components';
 import FaceIcon from '@material-ui/icons/Face';
 
 const RegisterFaceIcon = styled(FaceIcon)`

@@ -1,4 +1,4 @@
-import { keyframes } from '../../pages/Home/node_modules/styled-components';
+import { keyframes } from 'styled-components';
 
 const softFadeIn = keyframes`
   0% {

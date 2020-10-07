@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './header/Header';
 import { HomeWrapper, HomeContainer, GridChatPanel } from './HomeStyles';
 import { Grid } from '@material-ui/core';
 import ChatPanel from './ChatPanel/ChatPanel';
@@ -8,6 +7,7 @@ import EmailDestinataryProvider from '../../contexts/EmailDestinataryContext';
 import SearchUser from './SearchUser/SearchUser';
 import MessagesProvider from '../../contexts/MessagesContext';
 import SocketProvider from '../../contexts/SocketContext';
+import Header from './Header/Header';
 
 const Home = () => {
   return (

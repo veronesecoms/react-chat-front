@@ -5,7 +5,7 @@ import {
   RegisterFaceIcon,
   HalfCardRegister,
 } from './BannerRightRegisterStyledComponents';
-import * as Yup from '../../Home/SearchUser/node_modules/yup';
+import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { IRegisterUser } from '../../../interfaces/register-user.interface';
 import { registerUser } from '../../../services/users/user.service';

@@ -15,7 +15,7 @@ import { useMutation } from 'react-query';
 import { AxiosResponse, AxiosError } from 'axios';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import { login } from '../../../services/users/user.service';
-import * as Yup from '../../Home/SearchUser/node_modules/yup';
+import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import ButtonLoadingSvgAnimated from '../../../components/styled-components/button-loading-svg-animated';
 import { ProviderContext, useSnackbar } from 'notistack';
