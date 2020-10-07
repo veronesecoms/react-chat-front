@@ -48,10 +48,23 @@ const ErrorVerifiedEmailIcon = styled(ErrorOutlineIcon)`
   }
 `;
 
+const HalfCardConfirmEmail = styled.div`
+  overflow-y: auto;
+  width: 50%;
+  height: 80%;
+  border-radius: 4px;
+  background-color: #fafafa;
+  padding: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 export {
   VerifiedEmailIcon,
   HalfCardRightConfirmEmail,
   GrayParagraphy,
   EmailConfirmationContainer,
   ErrorVerifiedEmailIcon,
+  HalfCardConfirmEmail,
 };

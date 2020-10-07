@@ -7,7 +7,7 @@ import {
   TypographyDate,
   MessageList,
 } from './ChatPanelStyles';
-import { List, Typography, ListItemAvatar, Avatar } from '@material-ui/core';
+import { Typography, ListItemAvatar, Avatar } from '@material-ui/core';
 import { useQuery } from 'react-query';
 import { getSummaryMessages } from '../../../services/messages/messages.service';
 import SkeletonChatPanel from './SkeletonChatPanel/SkeletonChatPanel';

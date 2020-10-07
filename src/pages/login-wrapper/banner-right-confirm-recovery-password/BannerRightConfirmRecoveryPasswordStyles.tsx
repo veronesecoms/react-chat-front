@@ -13,4 +13,16 @@ const KeyIcon = styled(VpnKeyIcon)`
   }
 `;
 
-export default KeyIcon;
+const HalfCardConfirmRecoveryPassword = styled.div`
+  overflow-y: auto;
+  width: 50%;
+  height: 80%;
+  border-radius: 4px;
+  background-color: #fafafa;
+  padding: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+export { KeyIcon, HalfCardConfirmRecoveryPassword };

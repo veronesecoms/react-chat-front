@@ -2,15 +2,10 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  HalfCardRight,
-  TitleRegister,
-} from '../banner-right-login/BannerRightLoginStyledComponents';
-import {
   RegisterFaceIcon,
-  RegisterButton,
-  BackButton,
+  HalfCardRegister,
 } from './BannerRightRegisterStyledComponents';
-import * as Yup from 'yup';
+import * as Yup from '../../Home/SearchUser/node_modules/yup';
 import { useFormik } from 'formik';
 import { IRegisterUser } from '../../../interfaces/register-user.interface';
 import { registerUser } from '../../../services/users/user.service';
@@ -21,6 +16,8 @@ import ButtonLoadingSvgAnimated from '../../../components/styled-components/butt
 import { useSnackbar, ProviderContext } from 'notistack';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import SoftInputField from '../../../components/styled-components/soft-textfield';
+import CardTitle from '../../../components/styled-components/card-title';
+import TallButton from '../../../components/styled-components/tall-button';
 
 const BannerRightRegister = () => {
   const history = useHistory();
@@ -73,8 +70,10 @@ const BannerRightRegister = () => {
   });
 
   return (
-    <HalfCardRight>
-      <TitleRegister>Criação de conta</TitleRegister>
+    <HalfCardRegister>
+      <CardTitle variant="h4" color="primary">
+        Criação de conta
+      </CardTitle>
 
       <RegisterFaceIcon />
 
@@ -173,13 +172,13 @@ const BannerRightRegister = () => {
           </Grid>
 
           <Grid item xs={12} md={8}>
-            <RegisterButton
+            <TallButton
               type="submit"
               fullWidth
               variant="contained"
               disabled={isLoading}
               id="register-button"
-              color="secondary"
+              color="primary"
             >
               {isLoading ? (
                 <>
@@ -189,17 +188,17 @@ const BannerRightRegister = () => {
               ) : (
                 'Criar conta'
               )}
-            </RegisterButton>
+            </TallButton>
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <BackButton variant="outlined" component={Link} to="/" fullWidth>
+            <TallButton variant="outlined" component={Link} to="/" fullWidth>
               Voltar
-            </BackButton>
+            </TallButton>
           </Grid>
         </Grid>
       </form>
-    </HalfCardRight>
+    </HalfCardRegister>
   );
 };
 

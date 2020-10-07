@@ -1,14 +1,6 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  HalfCardRight,
-  TitleRegister,
-} from '../banner-right-login/BannerRightLoginStyledComponents';
-import {
-  RegisterButton,
-  BackButton,
-} from '../../login-wrapper/banner-right-register/BannerRightRegisterStyledComponents';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useMutation } from 'react-query';
@@ -19,8 +11,13 @@ import { useSnackbar, ProviderContext } from 'notistack';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import { sendEmailRecoveryPassword } from '../../../services/users/user.service';
 import { IRecoveryPasswordEmail } from '../../../interfaces/recovery-password-user.interface';
-import EmailIcon from './BannerRightRegisterRecoveryPasswordStyles';
+import {
+  EmailIcon,
+  HalfCardRecoveryPassword,
+} from './BannerRightRegisterRecoveryPasswordStyles';
 import SoftInputField from '../../../components/styled-components/soft-textfield';
+import CardTitle from '../../../components/styled-components/card-title';
+import TallButton from '../../../components/styled-components/tall-button';
 
 const BannerRightRecoveryPassword = () => {
   const history = useHistory();
@@ -62,8 +59,8 @@ const BannerRightRecoveryPassword = () => {
   });
 
   return (
-    <HalfCardRight>
-      <TitleRegister>Recuperação de senha</TitleRegister>
+    <HalfCardRecoveryPassword>
+      <CardTitle>Recuperação de senha</CardTitle>
 
       <EmailIcon />
 
@@ -85,7 +82,7 @@ const BannerRightRecoveryPassword = () => {
           </Grid>
 
           <Grid item xs={12} md={8}>
-            <RegisterButton
+            <TallButton
               type="submit"
               fullWidth
               id="send-email-button"
@@ -101,17 +98,17 @@ const BannerRightRecoveryPassword = () => {
               ) : (
                 'Receber instruções'
               )}
-            </RegisterButton>
+            </TallButton>
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <BackButton variant="outlined" component={Link} to="/" fullWidth>
+            <TallButton variant="outlined" component={Link} to="/" fullWidth>
               Voltar
-            </BackButton>
+            </TallButton>
           </Grid>
         </Grid>
       </form>
-    </HalfCardRight>
+    </HalfCardRecoveryPassword>
   );
 };
 

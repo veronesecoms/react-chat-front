@@ -10,6 +10,6 @@ const SoftInputField = styled(TextField)`
       border-color: #808080a1;
     }
   }
-`
+`;
 
-export default SoftInputField
+export default SoftInputField;

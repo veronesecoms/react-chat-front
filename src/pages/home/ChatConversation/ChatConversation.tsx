@@ -23,7 +23,6 @@ import { createRoom, getRoomId } from '../../../services/rooms/rooms.service';
 import { AxiosError } from 'axios';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import { useSocket } from '../../../contexts/SocketContext';
-import { Avatar } from '@material-ui/core';
 
 const ChatConversation = () => {
   const divContainerRef = useRef<HTMLDivElement>(null);

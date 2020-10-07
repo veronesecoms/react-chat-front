@@ -1,14 +1,6 @@
 import { Grid, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  HalfCardRight,
-  TitleRegister,
-} from '../banner-right-login/BannerRightLoginStyledComponents';
-import {
-  RegisterButton,
-  BackButton,
-} from '../../login-wrapper/banner-right-register/BannerRightRegisterStyledComponents';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useMutation } from 'react-query';
@@ -19,9 +11,14 @@ import ButtonLoadingSvgAnimated from '../../../components/styled-components/butt
 import { useSnackbar, ProviderContext } from 'notistack';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import { IConfirmRecoveryPassword } from '../../../interfaces/confirm-recovery-password-user.interface';
-import KeyIcon from './BannerRightConfirmRecoveryPasswordStyles';
+import {
+  KeyIcon,
+  HalfCardConfirmRecoveryPassword,
+} from './BannerRightConfirmRecoveryPasswordStyles';
 import { sendEmailConfirmRecoveryPassword } from '../../../services/users/user.service';
 import { ITokenConfirmationRecoveryPassword } from '../../../interfaces/token-confirmation-recovery-password-param.interface';
+import TallButton from '../../../components/styled-components/tall-button';
+import CardTitle from '../../../components/styled-components/card-title';
 
 const BannerRightConfirmRecoveryPassword = () => {
   const history = useHistory();
@@ -70,8 +67,8 @@ const BannerRightConfirmRecoveryPassword = () => {
   });
 
   return (
-    <HalfCardRight>
-      <TitleRegister>Recuperação de senha</TitleRegister>
+    <HalfCardConfirmRecoveryPassword>
+      <CardTitle>Recuperação de senha</CardTitle>
 
       <KeyIcon />
 
@@ -117,7 +114,7 @@ const BannerRightConfirmRecoveryPassword = () => {
           </Grid>
 
           <Grid item md={8}>
-            <RegisterButton
+            <TallButton
               type="submit"
               fullWidth
               variant="contained"
@@ -132,17 +129,17 @@ const BannerRightConfirmRecoveryPassword = () => {
               ) : (
                 'Alterar senha'
               )}
-            </RegisterButton>
+            </TallButton>
           </Grid>
 
           <Grid item md={4}>
-            <BackButton variant="outlined" component={Link} to="/" fullWidth>
+            <TallButton variant="outlined" component={Link} to="/" fullWidth>
               Voltar
-            </BackButton>
+            </TallButton>
           </Grid>
         </Grid>
       </form>
-    </HalfCardRight>
+    </HalfCardConfirmRecoveryPassword>
   );
 };
 

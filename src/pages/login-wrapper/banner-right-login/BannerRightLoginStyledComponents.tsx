@@ -1,18 +1,6 @@
 import { Button } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import styled from 'styled-components';
-
-const HalfCardRight = styled.div`
-  overflow-y: auto;
-  width: 50%;
-  height: 80%;
-  border-radius: 4px;
-  background-color: #fafafa;
-  padding: 20px;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
+import styled from '../../Home/node_modules/styled-components';
 
 const TitleRegister = styled.h1`
   color: #542673;
@@ -59,12 +47,24 @@ const LoginLockIcon = styled(LockOutlinedIcon)`
   }
 `;
 
+const HalfCardLogin = styled.div`
+  overflow-y: auto;
+  width: 50%;
+  height: 80%;
+  border-radius: 4px;
+  background-color: #fafafa;
+  padding: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 export {
-  HalfCardRight,
   TitleRegister,
   LoginButton,
   GraySeparator,
   TextLink,
   LoginLockIcon,
   TextAligner,
+  HalfCardLogin,
 };

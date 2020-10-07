@@ -2,7 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  HalfCardRight,
+  HalfCardLogin,
   TitleRegister,
   LoginButton,
   GraySeparator,
@@ -15,7 +15,7 @@ import { useMutation } from 'react-query';
 import { AxiosResponse, AxiosError } from 'axios';
 import { IRequestResponse } from '../../../interfaces/request-response.interface';
 import { login } from '../../../services/users/user.service';
-import * as Yup from 'yup';
+import * as Yup from '../../Home/SearchUser/node_modules/yup';
 import { useFormik } from 'formik';
 import ButtonLoadingSvgAnimated from '../../../components/styled-components/button-loading-svg-animated';
 import { ProviderContext, useSnackbar } from 'notistack';
@@ -81,7 +81,7 @@ const BannerRightLogin = () => {
   };
 
   return (
-    <HalfCardRight>
+    <HalfCardLogin>
       <Grid item md={12}>
         <TitleRegister>Já possuo uma conta</TitleRegister>
       </Grid>
@@ -154,7 +154,7 @@ const BannerRightLogin = () => {
           </Grid>
         </Grid>
       </form>
-    </HalfCardRight>
+    </HalfCardLogin>
   );
 };
 

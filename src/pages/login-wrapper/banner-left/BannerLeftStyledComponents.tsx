@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '../../Home/node_modules/styled-components';
 import { ReactComponent as SvgLogin } from '../../../resources/svg-login-cellphone.svg';
 import {
   softFadeIn,

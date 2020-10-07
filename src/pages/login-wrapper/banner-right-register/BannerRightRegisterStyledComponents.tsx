@@ -1,6 +1,5 @@
-import styled from 'styled-components';
+import styled from '../../Home/node_modules/styled-components';
 import FaceIcon from '@material-ui/icons/Face';
-import { Button } from '@material-ui/core';
 
 const RegisterFaceIcon = styled(FaceIcon)`
   && {
@@ -14,12 +13,16 @@ const RegisterFaceIcon = styled(FaceIcon)`
   }
 `;
 
-const RegisterButton = styled(Button)`
-  height: 45px;
+const HalfCardRegister = styled.div`
+  overflow-y: auto;
+  width: 50%;
+  height: 80%;
+  border-radius: 4px;
+  background-color: #fafafa;
+  padding: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
-const BackButton = styled(Button)`
-  height: 45px;
-`;
-
-export { RegisterFaceIcon, RegisterButton, BackButton };
+export { RegisterFaceIcon, HalfCardRegister };
