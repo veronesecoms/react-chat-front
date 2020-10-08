@@ -17,7 +17,7 @@ If you're looking for the backend of this project, [click here](https://github.c
 This is a basic real time chat developed to increase my knowledge in React, Node.js and Socket.io. If you feel it can help you with something, feel free to use partly or totally this code. :yum: 
 
 ## Apresentation
-[![ReactChatGif.gif](https://s8.gifyu.com/images/ReactChatGif.gif)](https://gifyu.com/image/6Uej)
+![](public/ReactChatGif.gif)
 
 ## Technologies that i used
 * As the name says, this chat is developed using [React](https://pt-br.reactjs.org/)
