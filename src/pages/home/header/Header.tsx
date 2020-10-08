@@ -37,6 +37,7 @@ const Header = () => {
     string | ArrayBuffer | null
   >('');
   const inputFileRef = useRef<HTMLInputElement>(null);
+
   const [mutateChangeProfilePicture] = useMutation<
     AxiosResponse<IRequestResponse>,
     AxiosError<IRequestResponse>,

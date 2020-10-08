@@ -8,6 +8,7 @@ import { SnackbarProvider } from 'notistack';
 
 const renderWithHistory = () => {
   const history = createMemoryHistory();
+
   const wrapper = render(
     <SnackbarProvider>
       <Router history={history}>
