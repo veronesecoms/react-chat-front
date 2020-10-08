@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Route,
-  Redirect,
-} from '../pages/home/Header/node_modules/react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRouteLogged = ({ component: Component, ...rest }) => (
   <Route
