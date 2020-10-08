@@ -1,5 +1,6 @@
 import { Avatar, Grid } from '@material-ui/core';
 import React from 'react';
+import { useEmailDestinatary } from '../../../../contexts/EmailDestinataryContext';
 import {
   DestinataryName,
   MessageContainer,
@@ -7,16 +8,10 @@ import {
 } from './DestinataryMessageStyles';
 
 const DestinataryMessage = ({ message }) => {
+  const { pictureDestinatary } = useEmailDestinatary();
   return (
     <>
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        spacing={1}
-        item
-        md={12}
-      >
+      <Grid container direction="row" alignItems="center" spacing={1} item>
         <Grid
           direction="column"
           container
@@ -28,7 +23,7 @@ const DestinataryMessage = ({ message }) => {
           sm={1}
         >
           <Grid item>
-            <Avatar src={message.picture} />
+            <Avatar src={pictureDestinatary} />
           </Grid>
           <Grid item>
             <MessageTime>
@@ -39,7 +34,7 @@ const DestinataryMessage = ({ message }) => {
             </MessageTime>
           </Grid>
         </Grid>
-        <Grid item xs={10} md="auto">
+        <Grid item xs="auto" md="auto">
           <MessageContainer>
             <DestinataryName>{message.first_name}</DestinataryName>
             {message.body}

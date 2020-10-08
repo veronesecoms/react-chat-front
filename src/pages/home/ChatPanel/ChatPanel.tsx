@@ -18,6 +18,7 @@ const ChatPanel = () => {
     setEmailDestinatary,
     emailDestinatary,
     setNameDestinatary,
+    setPictureDestinatary,
   } = useEmailDestinatary();
   const { isLoading, data: summaryMessages } = useQuery(
     'getSummaryMessages',
@@ -39,6 +40,7 @@ const ChatPanel = () => {
                   onClick={() => {
                     setEmailDestinatary(message.email);
                     setNameDestinatary(message.first_name);
+                    setPictureDestinatary(message.picture);
                   }}
                   button
                   component="a"

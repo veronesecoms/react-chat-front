@@ -9,12 +9,12 @@ import {
   BannerText,
   DivLogo,
   AvatarCircle,
-  Avatar,
   DivPerfil,
   UserName,
   MenuAnchor,
   UserEmail,
   FixedHeader,
+  AvatarUser,
   HiddenInputFile,
   ChangeIcon,
   DivCredentials,
@@ -111,7 +111,7 @@ const Header = () => {
                 accept="image/png, image/jpeg"
                 onChange={handleChangeImage}
               />
-              <Avatar
+              <AvatarUser
                 id="profile-picture"
                 src={loggedUserPicture}
                 onError={(e) => {

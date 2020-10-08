@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
-import { Container, Grid } from '@material-ui/core';
+import { Avatar, Container, Grid } from '@material-ui/core';
 import CachedIcon from '@material-ui/icons/Cached';
 import rotate from '../../../utils/animations/rotate';
 
@@ -45,7 +45,7 @@ const AvatarCircle = styled.div`
   align-items: center;
 `;
 
-const Avatar = styled.img`
+const AvatarUser = styled(Avatar)`
   margin: 0 auto;
   width: 30px;
   height: 30px;
@@ -136,4 +136,5 @@ export {
   ChangeIcon,
   HiddenInputFile,
   MenuAnchor,
+  AvatarUser,
 };

@@ -5,6 +5,9 @@ export const EmailDestinataryContext = createContext({});
 export default function EmailDestinataryProvider({ children }) {
   const [emailDestinatary, setEmailDestinatary] = useState<string | null>(null);
   const [nameDestinatary, setNameDestinatary] = useState<string | null>(null);
+  const [pictureDestinatary, setPictureDestinatary] = useState<string | null>(
+    null
+  );
 
   return (
     <EmailDestinataryContext.Provider
@@ -13,6 +16,8 @@ export default function EmailDestinataryProvider({ children }) {
         setEmailDestinatary,
         nameDestinatary,
         setNameDestinatary,
+        pictureDestinatary,
+        setPictureDestinatary,
       }}
     >
       {children}
@@ -31,11 +36,15 @@ export function useEmailDestinatary() {
     setEmailDestinatary,
     nameDestinatary,
     setNameDestinatary,
+    pictureDestinatary,
+    setPictureDestinatary,
   } = context;
   return {
     emailDestinatary,
     setEmailDestinatary,
     nameDestinatary,
     setNameDestinatary,
+    pictureDestinatary,
+    setPictureDestinatary,
   };
 }
