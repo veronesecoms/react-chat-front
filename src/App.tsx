@@ -6,7 +6,6 @@ import theme from './resources/material-theme-provider';
 import { SnackbarProvider } from 'notistack';
 import { Router } from 'react-router-dom';
 import AppRouter from './routes/AppRouter';
-
 const App = () => {
   return (
     <>
