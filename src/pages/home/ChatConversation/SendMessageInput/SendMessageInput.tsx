@@ -68,16 +68,12 @@ const SendMessageInput = () => {
       first_name: nameDestinatary,
     };
     const messagesInContext = [...messages, messageToBeAdded];
-    queryCache.setQueryData(
-      ['getMessagesFromUser', emailDestinatary],
-      messagesInContext
-    );
+    setMessages(messagesInContext);
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {nameDestinatary}
         <GridContainerMessage alignItems="center" container direction="row">
           <GridInput item xs={12} md={12}>
             <MessageInput

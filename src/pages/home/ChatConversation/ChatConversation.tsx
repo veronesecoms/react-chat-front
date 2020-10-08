@@ -28,6 +28,7 @@ import { useSocket } from '../../../contexts/SocketContext';
 const ChatConversation = () => {
   const divContainerRef = useRef<HTMLDivElement>(null);
   const { messages, setMessages } = useMessages();
+  const [newMessage, setNewMessage] = useState('');
   const { emailDestinatary, nameDestinatary } = useEmailDestinatary();
   const [loggedUserEmail] = useState<string | null>(
     localStorage.getItem('email')
@@ -51,6 +52,7 @@ const ChatConversation = () => {
 
   useQuery(['getMessagesFromUser', emailDestinatary], getUserMessages, {
     enabled: emailDestinatary !== null,
+    refetchOnWindowFocus: false,
     onSuccess: (dataMessages: IMessage[]) => {
       setMessages(dataMessages);
     },
@@ -92,19 +94,23 @@ const ChatConversation = () => {
     });
   };
 
+  useEffect(() => {
+    if (newMessage !== '') {
+      setMessages([
+        ...messages,
+        {
+          id: Date.now(),
+          email: emailDestinatary,
+          first_name: nameDestinatary,
+          body: newMessage,
+          createdAt: Date.now(),
+        },
+      ]);
+    }
+  }, [newMessage]);
+
   const addMessageToChat = (messageData) => {
-    const messageToBeAdded = {
-      id: Date.now(),
-      createdAt: Date.now(),
-      body: messageData,
-      first_name: nameDestinatary,
-    };
-    const messagesInContext = messages;
-    messagesInContext.push(messageToBeAdded);
-    queryCache.setQueryData(
-      ['getMessagesFromUser', emailDestinatary],
-      messagesInContext
-    );
+    setNewMessage(messageData);
   };
 
   const refreshChatPanel = () => {

@@ -1,10 +1,14 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 import IMessage from '../interfaces/message.interface';
 
 export const MessagesContext = createContext({});
 
 export default function MessagesProvider({ children }) {
   const [messages, setMessages] = useState<IMessage[] | null>(null);
+
+  useEffect(() => {
+    console.log(messages);
+  }, [messages]);
 
   return (
     <MessagesContext.Provider value={{ messages, setMessages }}>
