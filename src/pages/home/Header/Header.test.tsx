@@ -30,14 +30,3 @@ test('should show the email of the logged user', () => {
   const { getByText } = renderWithHistory();
   expect(getByText('renatop@hotmail.com.br')).toBeInTheDocument();
 });
-
-test('should show the picture of the logged user', () => {
-  const profilePicture =
-    'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
-  localStorage.setItem('picture', profilePicture);
-  const { container } = renderWithHistory();
-  const inputEmail = container
-    .querySelector('#profile-picture')
-    ?.getAttribute('src')!;
-  expect(inputEmail).toBe(profilePicture);
-});
