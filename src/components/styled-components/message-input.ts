@@ -1,15 +1,15 @@
-import {TextField} from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import styled from 'styled-components';
 
-const SearchInput = styled(TextField)`
+const MessageInput = styled(TextField)`
   && {
     .MuiFilledInput-root {
-      background-color: #5c4f82;
-      color: #fafafa;
+      background-color: #fafafa;
+      color: black;
       opacity: 95%;
     }
     .MuiInputLabel-filled {
-      color: #fafafa;
+      color: gray;
       opacity: 80%;
     }
     .MuiFilledInput-underline:before {
@@ -18,10 +18,7 @@ const SearchInput = styled(TextField)`
     .MuiFilledInput-underline:after {
       border-bottom: none;
     }
-    .MuiFormHelperText-contained {
-      color: #867ba2;
-    }
   }
 `;
 
-export default SearchInput;
+export default MessageInput;

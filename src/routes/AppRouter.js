@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
 import Home from '../pages/home/Home';
 import LoginWrapper from '../pages/login-wrapper/LoginWrapper';
 import history from '../utils/history';

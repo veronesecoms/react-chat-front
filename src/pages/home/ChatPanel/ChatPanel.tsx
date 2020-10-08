@@ -5,51 +5,75 @@ import {
   ListItemUserChat,
   InlineWrapper,
   TypographyDate,
+  MessageList,
 } from './ChatPanelStyles';
-import {List, Typography, ListItemAvatar, Avatar} from '@material-ui/core';
+import { Typography, ListItemAvatar, Avatar } from '@material-ui/core';
+import { useQuery } from 'react-query';
+import { getSummaryMessages } from '../../../services/messages/messages.service';
+import SkeletonChatPanel from './SkeletonChatPanel/SkeletonChatPanel';
+import { useEmailDestinatary } from '../../../contexts/EmailDestinataryContext';
 
 const ChatPanel = () => {
+  const {
+    setEmailDestinatary,
+    emailDestinatary,
+    setNameDestinatary,
+    setPictureDestinatary,
+  } = useEmailDestinatary();
+  const { isLoading, data: summaryMessages } = useQuery(
+    'getSummaryMessages',
+    getSummaryMessages
+  );
+
   return (
     <ChatPanelWrapper>
-      <List>
-        <ListItemUserChat button component="a" alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar src="https://i.pinimg.com/236x/bc/9a/8f/bc9a8f53ab34d2aa343002cf7952657c.jpg" />
-          </ListItemAvatar>
-          <UserNameAndLastMessageTextWrapper
-            primary={
-              <InlineWrapper>
-                <Typography>Ban</Typography>
-                <TypographyDate>09/09/2020</TypographyDate>
-              </InlineWrapper>
-            }
-            secondary={
-              <Typography component="span" variant="body2" color="textPrimary">
-                Maybe we should go to king island
-              </Typography>
-            }
-          />
-        </ListItemUserChat>
-
-        <ListItemUserChat button component="a" alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar src="https://i.pinimg.com/originals/47/d4/41/47d441829098c2df1cefbcf63a05324b.jpg" />
-          </ListItemAvatar>
-          <UserNameAndLastMessageTextWrapper
-            primary={
-              <InlineWrapper>
-                <Typography>Meliodas</Typography>
-                <TypographyDate>08/09/2020</TypographyDate>
-              </InlineWrapper>
-            }
-            secondary={
-              <Typography component="span" variant="body2" color="textPrimary">
-                Wish I could come, but I'm out of town this…
-              </Typography>
-            }
-          />
-        </ListItemUserChat>
-      </List>
+      <MessageList>
+        {isLoading ? (
+          <SkeletonChatPanel />
+        ) : (
+          <>
+            {summaryMessages &&
+              summaryMessages.map((message) => (
+                <ListItemUserChat
+                  selected={emailDestinatary === message.email ? true : false}
+                  key={message.id}
+                  onClick={() => {
+                    setEmailDestinatary(message.email);
+                    setNameDestinatary(message.first_name);
+                    setPictureDestinatary(message.picture);
+                  }}
+                  button
+                  component="a"
+                  alignItems="flex-start"
+                >
+                  <ListItemAvatar>
+                    <Avatar src={message.picture} />
+                  </ListItemAvatar>
+                  <UserNameAndLastMessageTextWrapper
+                    primary={
+                      <InlineWrapper>
+                        <Typography>{message.first_name}</Typography>
+                        <TypographyDate>
+                          {new Date(message.createdAt).toLocaleString('pt-BR')}
+                        </TypographyDate>
+                      </InlineWrapper>
+                    }
+                    secondary={
+                      <Typography
+                        noWrap={true}
+                        component="span"
+                        variant="body2"
+                        color="textPrimary"
+                      >
+                        {message.body}
+                      </Typography>
+                    }
+                  />
+                </ListItemUserChat>
+              ))}
+          </>
+        )}
+      </MessageList>
     </ChatPanelWrapper>
   );
 };

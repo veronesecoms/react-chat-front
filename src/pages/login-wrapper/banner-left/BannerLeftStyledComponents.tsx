@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { ReactComponent as SvgLogin } from '../../../resources/svg-login-cellphone.svg';
-import { softFadeIn, completeFadeIn, leftFadeIn, showHide } from '../../../utils/animations/showAnimations';
+import {
+  softFadeIn,
+  completeFadeIn,
+  leftFadeIn,
+  showHide,
+} from '../../../utils/animations/showAnimations';
 
 const SvgCellPhone = styled(SvgLogin)`
   #left-cellphone {
@@ -28,6 +33,9 @@ const HalfCardLeft = styled.div`
   border-radius: 30px 0px 0px 30px;
   background-color: #542673;
   padding: 20px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const HalfCardTitle = styled.h3`

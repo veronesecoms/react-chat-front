@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import {Container, Grid} from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 
 const HomeWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  padding-top: 50px;
+  padding-top: 75px;
   overflow: auto;
   background-color: #542673;
 `;
 
-const HomeContainer = styled(Container)`
-  margin-top: 40px;
-`;
+const HomeContainer = styled(Container)``;
 
 const SearchInputIcon = styled(SearchOutlinedIcon)`
   color: #fafafa;
@@ -25,6 +23,7 @@ const GridSearchInput = styled(Grid)`
 `;
 
 const GridChatPanel = styled(Grid)`
+  margin-top: 7px;
 `;
 
 export {

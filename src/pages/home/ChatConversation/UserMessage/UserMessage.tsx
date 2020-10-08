@@ -1,8 +1,8 @@
-import { Grid } from "@material-ui/core";
-import React from "react";
-import { HoursMessageSended, MessageContainer } from "./UserMessageStyles";
+import { Grid } from '@material-ui/core';
+import React from 'react';
+import { HoursMessageSended, MessageContainer } from './UserMessageStyles';
 
-const UserMessage = () => {
+const UserMessage = ({ message }) => {
   return (
     <>
       <Grid
@@ -22,8 +22,13 @@ const UserMessage = () => {
         >
           <Grid item>
             <MessageContainer>
-              <HoursMessageSended>09:30</HoursMessageSended>
-              eaemen kk
+              <HoursMessageSended>
+                {new Date(message.createdAt).toLocaleTimeString('pt-BR', {
+                  hour: 'numeric',
+                  minute: 'numeric',
+                })}
+              </HoursMessageSended>
+              {message.body}
             </MessageContainer>
           </Grid>
         </Grid>

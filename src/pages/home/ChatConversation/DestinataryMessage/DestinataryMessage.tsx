@@ -1,39 +1,43 @@
-import {Avatar, Grid} from '@material-ui/core';
+import { Avatar, Grid } from '@material-ui/core';
 import React from 'react';
+import { useEmailDestinatary } from '../../../../contexts/EmailDestinataryContext';
 import {
   DestinataryName,
   MessageContainer,
   MessageTime,
 } from './DestinataryMessageStyles';
 
-const DestinataryMessage = () => {
+const DestinataryMessage = ({ message }) => {
+  const { pictureDestinatary } = useEmailDestinatary();
   return (
     <>
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        spacing={1}
-        item
-        md={12}>
+      <Grid container direction="row" alignItems="center" spacing={1} item>
         <Grid
           direction="column"
           container
           wrap="nowrap"
           alignItems="center"
           item
-          md={1}>
+          xs={2}
+          md={1}
+          sm={1}
+        >
           <Grid item>
-            <Avatar src="https://i.pinimg.com/236x/bc/9a/8f/bc9a8f53ab34d2aa343002cf7952657c.jpg" />
+            <Avatar src={pictureDestinatary} />
           </Grid>
           <Grid item>
-            <MessageTime>09:30</MessageTime>
+            <MessageTime>
+              {new Date(message.createdAt).toLocaleTimeString('pt-BR', {
+                hour: 'numeric',
+                minute: 'numeric',
+              })}
+            </MessageTime>
           </Grid>
         </Grid>
-        <Grid item>
+        <Grid item xs="auto" md="auto">
           <MessageContainer>
-            <DestinataryName>Ban</DestinataryName>
-            Lorem ipsum dneafna n sei q láaaaaa itanhaem só mlk loko
+            <DestinataryName>{message.first_name}</DestinataryName>
+            {message.body}
           </MessageContainer>
         </Grid>
       </Grid>

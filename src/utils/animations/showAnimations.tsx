@@ -1,4 +1,4 @@
-import { keyframes } from 'styled-components'
+import { keyframes } from 'styled-components';
 
 const softFadeIn = keyframes`
   0% {
@@ -7,7 +7,7 @@ const softFadeIn = keyframes`
   100% {
     opacity: 0.5;
   }
-`
+`;
 
 const completeFadeIn = keyframes`
   0% {
@@ -16,7 +16,7 @@ const completeFadeIn = keyframes`
   100% {
     opacity: initial;
   }
-`
+`;
 
 const showHide = keyframes`
   from {
@@ -25,7 +25,7 @@ const showHide = keyframes`
   to {
     color: #d3d925;
   }
-`
+`;
 
 const leftFadeIn = keyframes`
   from {
@@ -36,6 +36,6 @@ const leftFadeIn = keyframes`
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
-`
+`;
 
-export { softFadeIn, completeFadeIn, leftFadeIn, showHide }
+export { softFadeIn, completeFadeIn, leftFadeIn, showHide };

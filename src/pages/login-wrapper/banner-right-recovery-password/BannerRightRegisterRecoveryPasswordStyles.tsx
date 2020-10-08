@@ -13,4 +13,16 @@ const EmailIcon = styled(MailOutlineIcon)`
   }
 `;
 
-export default EmailIcon
+const HalfCardRecoveryPassword = styled.div`
+  overflow-y: auto;
+  width: 50%;
+  height: 60%;
+  border-radius: 4px;
+  background-color: #fafafa;
+  padding: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+export { EmailIcon, HalfCardRecoveryPassword };

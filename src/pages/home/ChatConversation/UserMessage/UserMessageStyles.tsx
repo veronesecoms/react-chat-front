@@ -1,5 +1,5 @@
-import { Grid } from "@material-ui/core";
-import styled from "styled-components";
+import { Grid } from '@material-ui/core';
+import styled from 'styled-components';
 
 const MessageContainer = styled.div`
   background: linear-gradient(to right, #d3cce3, #e9e4f0);

@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import SmsOutlinedIcon from "@material-ui/icons/SmsOutlined";
-import { Container, Grid } from "@material-ui/core";
-import CachedIcon from "@material-ui/icons/Cached";
-import rotate from "../../../utils/animations/rotate";
+import styled from 'styled-components';
+import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
+import { Avatar, Container, Grid } from '@material-ui/core';
+import CachedIcon from '@material-ui/icons/Cached';
+import rotate from '../../../utils/animations/rotate';
 
 const HeaderBase = styled(Grid)`
   height: 70px;
@@ -19,7 +19,7 @@ const ChatIcon = styled(SmsOutlinedIcon)`
 
 const BannerText = styled.h6`
   color: #fafafa;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-size: 15px;
   opacity: 95%;
   margin-left: 5px;
@@ -28,6 +28,9 @@ const BannerText = styled.h6`
 const DivLogo = styled.div`
   display: inline-flex;
   align-items: center;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const AvatarCircle = styled.div`
@@ -42,7 +45,7 @@ const AvatarCircle = styled.div`
   align-items: center;
 `;
 
-const Avatar = styled.img`
+const AvatarUser = styled(Avatar)`
   margin: 0 auto;
   width: 30px;
   height: 30px;
@@ -70,7 +73,13 @@ const UserEmail = styled.p`
 `;
 
 const DivCredentials = styled.div`
+  padding: 5px;
   margin-left: 15px;
+  border-radius: 3px;
+  transition-duration: 0.5s;
+  &:hover {
+    background-color: #80808029;
+  }
 `;
 
 const FixedHeader = styled(Container)`
@@ -78,6 +87,7 @@ const FixedHeader = styled(Container)`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
 `;
 
 const ChangeIcon = styled(CachedIcon)`
@@ -98,6 +108,19 @@ const HiddenInputFile = styled.input`
   display: none;
 `;
 
+const MenuAnchor = styled.a`
+  transition-duration: 2s;
+  animation-duration: 1s;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 1;
+  &:hover {
+    background-color: white !important;
+  }
+`;
+
 export {
   HeaderBase,
   ChatIcon,
@@ -112,4 +135,6 @@ export {
   FixedHeader,
   ChangeIcon,
   HiddenInputFile,
+  MenuAnchor,
+  AvatarUser,
 };

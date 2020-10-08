@@ -25,4 +25,4 @@ const DestinataryName = styled.p`
   opacity: 60%;
 `;
 
-export {MessageContainer, MessageTime, DestinataryName};
+export { MessageContainer, MessageTime, DestinataryName };
