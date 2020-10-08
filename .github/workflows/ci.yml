@@ -29,8 +29,8 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.node-version }}-node-modules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-node-modules-
-
-      - name: Npm Install
+ 
+      - name: NPM Install
         run: npm install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
