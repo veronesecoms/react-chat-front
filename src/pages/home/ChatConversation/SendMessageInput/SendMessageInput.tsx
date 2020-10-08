@@ -22,9 +22,9 @@ export interface IMessageSave {
 }
 
 const SendMessageInput = () => {
-  const { messages } = useMessages();
+  const { messages, setMessages } = useMessages();
   const { socket, roomId } = useSocket();
-  const { emailDestinatary } = useEmailDestinatary();
+  const { emailDestinatary, nameDestinatary } = useEmailDestinatary();
   const [message, setMessage] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,6 +65,7 @@ const SendMessageInput = () => {
       createdAt: Date.now(),
       email: localStorage.getItem('email'),
       body: messageData.message,
+      first_name: nameDestinatary,
     };
     const messagesInContext = [...messages, messageToBeAdded];
     queryCache.setQueryData(
@@ -76,6 +77,7 @@ const SendMessageInput = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        {nameDestinatary}
         <GridContainerMessage alignItems="center" container direction="row">
           <GridInput item xs={12} md={12}>
             <MessageInput

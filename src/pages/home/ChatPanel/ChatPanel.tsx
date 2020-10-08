@@ -14,7 +14,11 @@ import SkeletonChatPanel from './SkeletonChatPanel/SkeletonChatPanel';
 import { useEmailDestinatary } from '../../../contexts/EmailDestinataryContext';
 
 const ChatPanel = () => {
-  const { setEmailDestinatary, emailDestinatary } = useEmailDestinatary();
+  const {
+    setEmailDestinatary,
+    emailDestinatary,
+    setNameDestinatary,
+  } = useEmailDestinatary();
   const { isLoading, data: summaryMessages } = useQuery(
     'getSummaryMessages',
     getSummaryMessages
@@ -32,7 +36,10 @@ const ChatPanel = () => {
                 <ListItemUserChat
                   selected={emailDestinatary === message.email ? true : false}
                   key={message.id}
-                  onClick={() => setEmailDestinatary(message.email)}
+                  onClick={() => {
+                    setEmailDestinatary(message.email);
+                    setNameDestinatary(message.first_name);
+                  }}
                   button
                   component="a"
                   alignItems="flex-start"
