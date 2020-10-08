@@ -1,5 +1,5 @@
 import { render, fireEvent, act, waitFor } from '@testing-library/react';
-import '../../home/Header/node_modules/@testing-library/jest-dom';
+import '@testing-library/jest-dom';
 import React from 'react';
 import BannerRightRegister from './BannerRightRegister';
 import { Router } from 'react-router-dom';
